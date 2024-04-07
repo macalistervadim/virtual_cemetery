@@ -8,11 +8,9 @@ urlpatterns = [
 if django.conf.settings.DEBUG:
     import debug_toolbar
 
-    urlpatterns += (
-        [
-            django.urls.path(
-                "__debug__/",
-                django.urls.include(debug_toolbar.urls),
-            ),
-        ]
-    )
+    urlpatterns += [
+        django.urls.path(
+            "__debug__/",
+            django.urls.include(debug_toolbar.urls),
+        ),
+    ]

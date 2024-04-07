@@ -28,7 +28,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "animals.apps.AnimalsConfig",
+    "feedback.apps.FeedbackConfig",
     "homepage.apps.HomepageConfig",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -73,8 +76,12 @@ WSGI_APPLICATION = "virtual_cemetery.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": os.getenv("DB_ENGINE", default="django.db.backends.sqlite3"),
+        "NAME": os.getenv("DB_NAME", default="default_db_name"),
+        "USER": os.getenv("DB_USER", default="default_db_user"),
+        "PASSWORD": os.getenv("DB_PASSWORD", default="default_db_password"),
+        "HOST": os.getenv("DB_HOST", default="localhost"),
+        "PORT": os.getenv("DB_PORT", default=""),
     },
 }
 
