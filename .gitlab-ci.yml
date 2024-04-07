@@ -1,0 +1,29 @@
+stages:
+  - test
+  - linting
+  - black
+
+flake8:
+  stage: linting
+  image: python:3.10
+  script:
+    - pip install flake8 flake8-absolute-import flake8-commas flake8-import-order flake8-print flake8-quotes flake8-use-pathlib pep8-naming
+    - flake8 --config .flake8
+
+black:
+  stage: black
+  image: registry.gitlab.com/pipeline-components/black:latest
+  script:
+    - black --config pyproject.toml --check .
+
+test:
+  stage: test
+  image: python:3.10
+  script:
+    - python -m venv $CI_PROJECT_DIR/venv
+    - source $CI_PROJECT_DIR/venv/bin/activate
+    - pip install -r requirements/test.txt
+    - cd $CI_PROJECT_DIR/virtual_cemetery
+    - python manage.py test
+    - deactivate
+    - rm -rf $CI_PROJECT_DIR/venv
