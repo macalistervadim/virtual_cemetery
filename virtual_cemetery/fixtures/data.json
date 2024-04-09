@@ -1,5 +1,70 @@
 [
 {
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2024-04-09T05:56:40.334Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"\\u0434\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\\u0435 \\u043f\\u043e\\u043b\\u0435\", \"object\": \"admin\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2024-04-09T05:59:48.268Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"\\u0434\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\\u0435 \\u043f\\u043e\\u043b\\u0435\", \"object\": \"admin\", \"fields\": [\"\\u0424\\u043e\\u0442\\u043e\\u0433\\u0440\\u0430\\u0444\\u0438\\u044f \\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2024-04-09T06:00:28.907Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"\\u0434\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\\u0435 \\u043f\\u043e\\u043b\\u0435\", \"object\": \"admin\", \"fields\": [\"\\u0424\\u043e\\u0442\\u043e\\u0433\\u0440\\u0430\\u0444\\u0438\\u044f \\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2024-04-09T06:02:39.097Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"\\u0434\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\\u0435 \\u043f\\u043e\\u043b\\u0435\", \"object\": \"admin\", \"fields\": [\"\\u0424\\u043e\\u0442\\u043e\\u0433\\u0440\\u0430\\u0444\\u0438\\u044f \\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2024-04-09T06:05:47.365Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
+  }
+},
+{
   "model": "auth.permission",
   "pk": 1,
   "fields": {
@@ -216,6 +281,60 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add дополнительное поле",
+    "content_type": 7,
+    "codename": "add_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change дополнительное поле",
+    "content_type": 7,
+    "codename": "change_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete дополнительное поле",
+    "content_type": 7,
+    "codename": "delete_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view дополнительное поле",
+    "content_type": 7,
+    "codename": "view_profile"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$O0rJkBFyUHpY3NK72fp68D$YxZeTTUJwxkDssj/g/TOn0iezth8Ks97tJazIZhmEc8=",
+    "last_login": "2024-04-09T07:25:56.896Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Вадим",
+    "last_name": "Старцев",
+    "email": "macalistervadim@yandex.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-04-09T05:56:25Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "contenttypes.contenttype",
   "pk": 1,
   "fields": {
@@ -261,6 +380,30 @@
   "fields": {
     "app_label": "sessions",
     "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "users",
+    "model": "profile"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "f31hmzacfoq0fjfak0sqvc3d3jf898j0",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxN15Kes5gre1dHECOFCcV4u4QKQW0b2beS0Tc1hq3TkucijgLJU6_W8L8oLaDcsd2m2We27pMSe6KPGiX17nQ83K4fwcVe_3WDGCS1SqNg1IQwOkR2efswVhtmDB4M3BhRTZgcS4w6QzkdUig0Xnx_gDL_jeP:1ru5rg:ppvFQAIDFehXd9Peb8pRAilvSO2q7cyZPEOyQ3N5iSQ",
+    "expire_date": "2024-04-23T07:25:56.898Z"
+  }
+},
+{
+  "model": "users.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "avatar": ""
   }
 }
 ]

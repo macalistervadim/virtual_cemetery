@@ -1,5 +1,16 @@
+import pathlib
+import uuid
+
+import django.contrib.auth.models
 import django.db
 import django.utils.translation as translation
+
+
+def item_directory_path(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    profile_id_str = str(instance.id)
+    return pathlib.Path("profile") / profile_id_str / filename
 
 
 class Profile(django.db.models.Model):
@@ -7,14 +18,12 @@ class Profile(django.db.models.Model):
         django.contrib.auth.models.User,
         on_delete=django.db.models.CASCADE,
     )
-    username = django.db.models.CharField(
-        translation.gettext_lazy("имя пользователя"),
-        help_text=translation.gettext_lazy("Имя пользователя"),
-        max_length=50,
-    )
-    email = django.db.models.EmailField(
-        translation.gettext_lazy("электронная почта"),
-        help_text=translation.gettext_lazy("Адрес электронной почты"),
+    avatar = django.db.models.ImageField(
+        "фотография профиля",
+        upload_to=item_directory_path,
+        null=True,
+        blank=True,
+        help_text=translation.gettext_lazy("Выберите фотографию профиля"),
     )
 
     class Meta:
