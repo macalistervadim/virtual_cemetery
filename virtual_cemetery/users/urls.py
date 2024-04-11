@@ -59,4 +59,5 @@ urlpatterns = [
         ),
         name="password-change-done",
     ),
+    django.urls.path("profile/", users.views.profile_user, name="profile"),
 ]

@@ -169,7 +169,7 @@ static/
 .DS_Store
 
 # email sending debug
-send_mail/
+sent_mails/
 
 # pre-commit
 .pre-commit-config.yaml

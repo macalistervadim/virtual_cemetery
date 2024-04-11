@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+{% load static %}
+{% load i18n %}
+<a class="navbar-brand" href="{% url 'homepage:home' %}">
+    <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="Logo" width="85" height="85">
+</a>
+<div class="collapse navbar-collapse" id="navbarNav">
+  {% with request.resolver_match.view_name as view_name %}
+  <ul class="navbar-nav ms-auto">
+      {% if user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">{% trans 'Админ-панель' %}</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+          {% if view_name == 'homepage:home' %}
+              <span class="nav-link disabled">{% trans 'Главная' %}</span>
+          {% else %}
+              <a class="nav-link" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
+          {% endif %}
+      </li>
+      <li class="nav-item">
+        {% if view_name == 'users:profile' %}
+            <span class="nav-link disabled">{% trans 'Личный кабинет' %}</span>
+        {% else %}
+            <a class="nav-link" href="{% url 'users:profile' %}">{% trans 'Личный кабинет' %}</a>
+        {% endif %}
+    </li>
+  </ul>
+{% endwith %}
+</div>
+</div>
+</nav>
+</header>

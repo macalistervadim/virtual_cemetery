@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+
+{% block title %}cloudpets - Профиль пользователя{% endblock title %}
+
+{% block content %}
+<h3>Пользователь - {{ user.first_name }}</h3>
+<p>{{ user.email }}</p>
+{% endblock content %}

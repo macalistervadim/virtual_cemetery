@@ -3,6 +3,7 @@ import django.contrib.auth.models
 import django.contrib.auth.views
 import django.core.exceptions
 import django.forms
+import django.shortcuts
 import django.utils.translation as translation
 
 
@@ -25,3 +26,13 @@ class CustomPasswordResetForm(django.contrib.auth.forms.PasswordResetForm):
 
 class CustomPasswordResetView(django.contrib.auth.views.PasswordResetView):
     form_class = CustomPasswordResetForm
+
+
+def profile_user(request):
+    user = request.user
+
+    template = "users/profile_user.html"
+    context = {
+        "user": user,
+    }
+    return django.shortcuts.render(request, template, context)
