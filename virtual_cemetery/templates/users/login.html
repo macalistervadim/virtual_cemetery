@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-xl mt-4">
+    <h1>Входи</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" class="container">
+        {% csrf_token %}
+        <div class="list-group">
+            {% include "includes/form.html" %}
+        </div>
+        <button type="submit" class="btn btn-primary mt-3" value="uwu">Submit</button>
+    </form>
+    
+    <a href="{% url 'users:password-reset' %}" class="btn btn-link btn-sm">"Забыли пароль?"</a>
+</div>
+
+{% endblock content %}

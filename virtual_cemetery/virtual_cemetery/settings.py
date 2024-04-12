@@ -42,6 +42,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "users.middleware.LoadUserMiddleware",
 ]
 
 if DEBUG:
@@ -130,3 +131,13 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# users
+LOGIN_REDIRECT_URL = "homepage:home"
+LOGOUT_REDIRECT_URL = "homepage:home"
+DEFAULT_USER_IS_ACTIVE = False
+DJANGO_MAIL = "ex@example.ex"
+MAX_AUTH_ATTEMPTS = 4
+AUTHENTICATION_BACKENDS = [
+    "users.backends.AuthBackend",
+]

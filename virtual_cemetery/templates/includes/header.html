@@ -22,13 +22,23 @@
               <a class="nav-link" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
           {% endif %}
       </li>
-      <li class="nav-item">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
         {% if view_name == 'users:profile' %}
             <span class="nav-link disabled">{% trans 'Личный кабинет' %}</span>
         {% else %}
             <a class="nav-link" href="{% url 'users:profile' %}">{% trans 'Личный кабинет' %}</a>
         {% endif %}
-    </li>
+        </li>
+        <form action="{% url 'users:logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-warning">Выйти</button>
+        </form>
+        {% else %}
+      <button type="button" class="btn btn-outline-light me-2" onclick="location.href='{% url "users:login" %}';">Войти</button>
+      <button type="button" class="btn btn-warning" onclick="location.href='{% url "users:signup" %}';">Регистрация</button>
+        {% endif %}
+      </div>
   </ul>
 {% endwith %}
 </div>

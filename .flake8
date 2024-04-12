@@ -5,3 +5,4 @@ exclude = .git, __pycache__, migrations, venv
 import-order-style = google
 max-line-length = 100
 max-complexity = 10
+max-expression-complexity = 10

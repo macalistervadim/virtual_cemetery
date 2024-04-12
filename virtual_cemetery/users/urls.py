@@ -1,11 +1,28 @@
 import django.contrib.auth.views as auth_views
+import django.forms
 import django.urls
+
 
 import users.views
 
 app_name = "users"
 
 urlpatterns = [
+    django.urls.path(
+        "login/",
+        auth_views.LoginView.as_view(
+            template_name="users/login.html",
+            authentication_form=users.forms.AuthForm,
+        ),
+        name="login",
+    ),
+    django.urls.path(
+        "logout/",
+        auth_views.LogoutView.as_view(
+            template_name="users/logout.html",
+        ),
+        name="logout",
+    ),
     django.urls.path(
         "password-reset/",
         users.views.CustomPasswordResetView.as_view(
@@ -60,4 +77,7 @@ urlpatterns = [
         name="password-change-done",
     ),
     django.urls.path("profile/", users.views.profile_user, name="profile"),
+    django.urls.path("signup/", users.views.SignUpView.as_view(), name="signup"),
+    django.urls.path("activate/<pk>/", users.views.activate, name="activate"),
+    django.urls.path("reactivate/<pk>/", users.views.reactivate, name="reactivate"),
 ]

@@ -173,3 +173,6 @@ sent_mails/
 
 # pre-commit
 .pre-commit-config.yaml
+
+
+cemetery.sql
