@@ -50,6 +50,12 @@ class CustomUserCreationForm(
 
         return user
 
+    def clean(self):
+        cleaned_data = super().clean()
+        if User.objects.filter(email=cleaned_data.get('email')).exists():
+            self.add_error('email', "Эта почта уже зарегестрированна")
+        return cleaned_data
+
 
 class AuthForm(
     BootstrapFormMixin,
