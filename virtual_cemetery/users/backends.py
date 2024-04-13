@@ -27,6 +27,7 @@ class AuthBackend(django.contrib.auth.backends.ModelBackend):
             if user.profile.attempts_count >= django.conf.settings.MAX_AUTH_ATTEMPTS:
                 user.is_active = False
                 user.profile.block_date = django.utils.timezone.now()
+                user.profile.save()
                 user.save()
                 activate_url = request.build_absolute_uri(
                     django.urls.reverse(
@@ -51,6 +52,6 @@ class AuthBackend(django.contrib.auth.backends.ModelBackend):
                     " Для разблокировки проверьте вашу эл. почту",
                 )
 
-            user.profile.save()
+            user.profile.save()  # хоть эта строчка не нужна на всякий случай пусть будет
 
         return None
