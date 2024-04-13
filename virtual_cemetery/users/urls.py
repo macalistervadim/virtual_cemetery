@@ -11,7 +11,7 @@ urlpatterns = [
     django.urls.path(
         "login/",
         auth_views.LoginView.as_view(
-            template_name="users/login.html",
+            template_name="users/login/login.html",
             authentication_form=users.forms.AuthForm,
         ),
         name="login",
@@ -19,7 +19,7 @@ urlpatterns = [
     django.urls.path(
         "logout/",
         auth_views.LogoutView.as_view(
-            template_name="users/logout.html",
+            template_name="users/login/logout.html",
         ),
         name="logout",
     ),

@@ -129,15 +129,14 @@ MEDIA_URL = "/media/"
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "cloudpets@site.com")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# users
 LOGIN_REDIRECT_URL = "homepage:home"
 LOGOUT_REDIRECT_URL = "homepage:home"
-DEFAULT_USER_IS_ACTIVE = False
-DJANGO_MAIL = "ex@example.ex"
-MAX_AUTH_ATTEMPTS = 4
+DEFAULT_USER_IS_ACTIVE = os.getenv("DEFAULT_USER_IS_ACTIVE", False)
+MAX_AUTH_ATTEMPTS = int(os.getenv("MAX_AUTH_ATTEMPTS", 4))
 AUTHENTICATION_BACKENDS = [
     "users.backends.AuthBackend",
 ]

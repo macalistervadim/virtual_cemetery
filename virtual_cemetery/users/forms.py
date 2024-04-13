@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import django.forms
 import django.utils.translation as translation
 
+import users.managers
 import users.models
 
 
@@ -43,7 +44,7 @@ class CustomUserCreationForm(
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.email = users.models.UserManager.normalize_email(user.email)
+        user.email = users.managers.UserManager.normalize_email(user.email)
         if commit:
             user.save()
 

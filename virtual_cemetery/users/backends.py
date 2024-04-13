@@ -1,8 +1,7 @@
-__all__ = ["AuthBackend"]
-
 import django.conf
 import django.contrib.auth.backends
-from django.core.exceptions import ValidationError
+import django.core.exceptions
+import django.template
 import django.urls
 import django.utils
 
@@ -36,13 +35,21 @@ class AuthBackend(django.contrib.auth.backends.ModelBackend):
                     ),
                 )
                 django.core.mail.send_mail(
-                    "SO many login attempts! ReActivate your account",
-                    f"link to reactivate your account: {activate_url}",
-                    django.conf.settings.DJANGO_MAIL,
+                    django.template.loader.render_to_string(
+                        "users/login/sent_mail/reactivate_subject.txt",
+                    ),
+                    django.template.loader.render_to_string(
+                        "users/login/sent_mail/reactivate_body.html",
+                        {"activate_url": activate_url},
+                    ),
+                    django.conf.settings.DEFAULT_FROM_EMAIL,
                     [user.email],
                     fail_silently=False,
                 )
-                raise ValidationError("Превышено количество попыток входа. Aккаунт заблокирован")
+                raise django.core.exceptions.ValidationError(
+                    "Превышено количество попыток входа. Aккаунт заблокирован."
+                    " Для разблокировки проверьте вашу эл. почту",
+                )
 
             user.profile.save()
 
