@@ -67,3 +67,30 @@ class AuthForm(
             User.username.field.name,
             User.password.field.name,
         )
+
+
+class ChangeProfile(
+    BootstrapFormMixin,
+    django.forms.ModelForm,
+):
+    class Meta:
+        model = users.models.Profile
+        fields = [
+            users.models.Profile.avatar.field.name,
+        ]
+
+
+class UserChangeForm(
+    BootstrapFormMixin,
+    django.contrib.auth.forms.UserChangeForm,
+):
+    password = None
+
+    class Meta(django.contrib.auth.forms.UserChangeForm.Meta):
+        fields = [
+            django.contrib.auth.models.User.first_name.field.name,
+            django.contrib.auth.models.User.email.field.name,
+        ]
+        exclude = [
+            django.contrib.auth.models.User.password.field.name,
+        ]

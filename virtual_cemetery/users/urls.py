@@ -77,6 +77,7 @@ urlpatterns = [
         name="password-change-done",
     ),
     django.urls.path("profile/", users.views.profile_user, name="profile"),
+    django.urls.path("profile/settings/", users.views.profile_user_change, name="profile_settings"),
     django.urls.path("signup/", users.views.SignUpView.as_view(), name="signup"),
     django.urls.path("activate/<pk>/", users.views.activate, name="activate"),
     django.urls.path("reactivate/<pk>/", users.views.reactivate, name="reactivate"),

@@ -6,6 +6,7 @@ import users.models
 class ProfileInline(django.contrib.admin.TabularInline):
     model = users.models.Profile
     can_delete = False
+    readonly_fields = ("block_date",)
 
 
 class UserAdmin(django.contrib.auth.admin.UserAdmin):
