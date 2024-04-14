@@ -1,5 +1,5 @@
 [flake8]
-application_import_names = homepage, users, virtual_cemetery
+application_import_names = feedback, homepage, users, virtual_cemetery
 inline-quotes = double
 exclude = .git, __pycache__, migrations, venv
 import-order-style = google

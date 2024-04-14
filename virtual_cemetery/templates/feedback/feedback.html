@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block title %}cloudpets - Обратная связь{% endblock title %}
+
+{% block content %}
+  {% include "includes/messages.html" %}
+    <h3 class="mt-5 mb-4">Оставьте вашу обратную связь и получите ответ</h3>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {{ form_files.as_p }}
+      <button type="submit" class="btn btn-warning btn-block mt-4">Отправить</button>
+  </form>
+{% endblock content %}

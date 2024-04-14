@@ -1,5 +1,5 @@
 import django.contrib.auth.forms
-from django.contrib.auth.models import User
+import django.contrib.auth.models
 import django.forms
 import django.utils.translation as translation
 
@@ -36,10 +36,10 @@ class CustomUserCreationForm(
     django.contrib.auth.forms.UserCreationForm,
 ):
     class Meta(django.contrib.auth.forms.UserCreationForm.Meta):
-        model = User
+        model = django.contrib.auth.models.User
         fields = (
-            User.email.field.name,
-            User.username.field.name,
+            django.contrib.auth.models.User.email.field.name,
+            django.contrib.auth.models.User.username.field.name,
         )
 
     def save(self, commit=True):
@@ -52,7 +52,7 @@ class CustomUserCreationForm(
 
     def clean(self):
         cleaned_data = super().clean()
-        if User.objects.filter(email=cleaned_data.get("email")).exists():
+        if django.contrib.auth.models.User.objects.filter(email=cleaned_data.get("email")).exists():
             self.add_error("email", "Эта почта уже зарегестрированна")
         return cleaned_data
 
@@ -64,8 +64,8 @@ class AuthForm(
     class Meta:
         model = users.models.User
         fields = (
-            User.username.field.name,
-            User.password.field.name,
+            django.contrib.auth.models.User.username.field.name,
+            django.contrib.auth.models.User.password.field.name,
         )
 
 

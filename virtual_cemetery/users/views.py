@@ -1,6 +1,7 @@
 import datetime
 
 import django.conf
+import django.contrib.auth.decorators
 import django.contrib.auth.forms
 import django.contrib.auth.models
 import django.contrib.auth.views
@@ -15,7 +16,6 @@ import django.utils
 import django.utils.translation as translation
 import django.views
 
-
 import users.forms
 import users.models
 
@@ -24,6 +24,7 @@ class CustomPasswordResetView(django.contrib.auth.views.PasswordResetView):
     form_class = users.forms.CustomPasswordResetForm
 
 
+@django.contrib.auth.decorators.login_required
 def profile_user(request):
     user = request.user
     template = "users/profile/profile_user.html"
@@ -34,6 +35,7 @@ def profile_user(request):
     return django.shortcuts.render(request, template, context)
 
 
+@django.contrib.auth.decorators.login_required
 def profile_user_change(request):
     template = "users/profile/profile_user_change.html"
 

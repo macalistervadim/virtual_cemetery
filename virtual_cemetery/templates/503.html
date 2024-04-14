@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}cloudpets - Сервер недоступен{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="mb-3">Мы скоро вернемся...</h2>
+            <p class="lead">В данный момент сервер недоступен. Извиняемся за предоставленные неудобства</p>
+            <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="Logo" width="500" height="500">
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -7,20 +7,13 @@ import dotenv
 
 dotenv.load_dotenv()
 
-
-def load_bool(name, default):
-    value = os.getenv(name, str(default)).lower()
-    return value in ("", "true", "True", "t", "y", "yes", "YES", "1")
-
-
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default="key")
 
-DEBUG = load_bool("DJANGO_DEBUG", default=False)
+DEBUG = os.getenv("DJANGO_DEBUG", default="False") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", default="*").split(",")
-
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -29,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "feedback.apps.FeedbackConfig",
     "homepage.apps.HomepageConfig",
     "users.apps.UsersConfig",
     "sorl.thumbnail",

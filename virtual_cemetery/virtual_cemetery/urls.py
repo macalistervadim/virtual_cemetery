@@ -5,6 +5,7 @@ urlpatterns = [
     django.urls.path("admin/", django.contrib.admin.site.urls),
     django.urls.path("", django.urls.include("homepage.urls")),
     django.urls.path("users/", django.urls.include("users.urls")),
+    django.urls.path("feedback/", django.urls.include("feedback.urls")),
 ]
 
 if django.conf.settings.DEBUG:
