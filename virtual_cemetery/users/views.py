@@ -12,6 +12,7 @@ import django.template
 import django.template.loader
 import django.urls
 import django.utils
+import django.utils.translation as translation
 import django.views
 
 
@@ -25,12 +26,47 @@ class CustomPasswordResetView(django.contrib.auth.views.PasswordResetView):
 
 def profile_user(request):
     user = request.user
+    template = "users/profile/profile_user.html"
 
-    template = "users/profile_user.html"
     context = {
         "user": user,
     }
     return django.shortcuts.render(request, template, context)
+
+
+def profile_user_change(request):
+    template = "users/profile/profile_user_change.html"
+
+    if request.method == "POST":
+        profile_form = users.forms.ChangeProfile(
+            request.POST or None,
+            request.FILES or None,
+            instance=request.user.profile,
+        )
+        user_form = users.forms.UserChangeForm(
+            request.POST or None,
+            instance=request.user,
+        )
+
+        if profile_form.is_valid() and user_form.is_valid():
+            profile_form.save()
+            user_form.save()
+            django.contrib.messages.success(
+                request,
+                translation.gettext_lazy(
+                    "Настройки успешно сохранены",
+                ),
+            )
+            return django.shortcuts.redirect("users:profile")
+    else:
+        profile_form = users.forms.ChangeProfile(instance=request.user.profile)
+        user_form = users.forms.UserChangeForm(instance=request.user)
+
+    return django.shortcuts.render(
+        request,
+        template,
+        {"profile_form": profile_form, "user_form": user_form},
+    )
 
 
 class SignUpView(django.views.View):

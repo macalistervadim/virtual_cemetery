@@ -4,6 +4,7 @@ import uuid
 import django.contrib.auth.models
 import django.db
 import django.utils.translation as translation
+import sorl.thumbnail
 
 import users.managers
 
@@ -27,7 +28,7 @@ class Profile(django.db.models.Model):
         django.contrib.auth.models.User,
         on_delete=django.db.models.CASCADE,
     )
-    avatar = django.db.models.ImageField(
+    avatar = sorl.thumbnail.ImageField(
         "фотография профиля",
         upload_to=item_directory_path,
         null=True,
@@ -53,3 +54,23 @@ class Profile(django.db.models.Model):
 
     def __str__(self):
         return self.user.username[:25]
+
+    def get_image_300x300(self):
+        return sorl.thumbnail.get_thumbnail(
+            self.avatar,
+            "300x300",
+            crop="center",
+            quality=51,
+        )
+
+    def image_tmb(self):
+        if self.image:
+            return django.utils.html.mark_safe(
+                f"<img src='{self.get_image_300x300().url}' width='50'>",
+            )
+
+        return translation.gettext_lazy("Нет аватарки")
+
+    image_tmb.short_description = translation.gettext_lazy("превью")
+    image_tmb.allow_tags = True
+    image_tmb.field_name = "image_tmb"

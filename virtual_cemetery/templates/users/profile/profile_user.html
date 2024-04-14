@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+
+{% block title %}cloudpets - Профиль пользователя{% endblock title %}
+
+{% block content %}
+{% include "includes/messages.html" %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-body text-center">
+                {% if user.profile.avatar %}
+                <img src="{{ user.profile.get_image_300x300.url }}" alt="Avatar" class="img-thumbnail" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="card-title mb-0">
+                        {% if user.first_name %}
+                        {{ user.first_name }}
+                        {% else %}
+                        {{ user.email }}
+                        {% endif %}
+                    </h2>
+                    <a href="{% url 'users:profile_settings' %}" class="btn btn-warning btn-sm">Настройки</a>
+                </div>
+                <hr>
+                <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
