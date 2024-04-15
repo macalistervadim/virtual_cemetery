@@ -1,6 +1,7 @@
 import datetime
 
 import django.conf
+import django.contrib
 import django.contrib.auth.decorators
 import django.contrib.auth.forms
 import django.contrib.auth.models
@@ -131,3 +132,39 @@ def reactivate(requset, pk):
         user.save()
 
     return django.shortcuts.redirect(django.urls.reverse("homepage:home"))
+
+
+def resend_activation_email(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        try:
+            if "@" in username:
+                user = users.models.User.objects.by_mail(username)
+            else:
+                user = users.models.User.objects.get(username=username)
+            if user is not None and not user.is_active:
+                activate_url = request.build_absolute_uri(
+                    django.urls.reverse(
+                        "users:reactivate",
+                        kwargs={"pk": user.id},
+                    ),
+                )
+                django.core.mail.send_mail(
+                    django.template.loader.render_to_string(
+                        "users/login/sent_mail/reactivate_subject.txt",
+                    ),
+                    django.template.loader.render_to_string(
+                        "users/login/sent_mail/reactivate_body.html",
+                        {"activate_url": activate_url},
+                    ),
+                    django.conf.settings.DEFAULT_FROM_EMAIL,
+                    [user.email],
+                    fail_silently=False,
+                )
+                django.contrib.messages.success(request, "Письмо успешно отправлено!")
+                request.session["show_resend_button"] = False
+        except users.models.User.DoesNotExist:
+            django.contrib.messages.error(request, "Аккаунт не найден!")
+            return django.shortcuts.redirect("users:login")
+
+    return django.shortcuts.redirect("users:login")

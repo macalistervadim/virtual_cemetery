@@ -81,4 +81,9 @@ urlpatterns = [
     django.urls.path("signup/", users.views.SignUpView.as_view(), name="signup"),
     django.urls.path("activate/<pk>/", users.views.activate, name="activate"),
     django.urls.path("reactivate/<pk>/", users.views.reactivate, name="reactivate"),
+    django.urls.path(
+        "resend_activation_email",
+        users.views.resend_activation_email,
+        name="resend_activation_email",
+    ),
 ]

@@ -3,6 +3,6 @@ application_import_names = animals, feedback, homepage, users, virtual_cemetery
 inline-quotes = double
 exclude = .git, __pycache__, migrations, venv
 import-order-style = google
-max-line-length = 100
+max-line-length = 120
 max-complexity = 10
 max-expression-complexity = 10
