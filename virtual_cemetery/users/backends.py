@@ -24,6 +24,7 @@ class AuthBackend(django.contrib.auth.backends.ModelBackend):
                 return user
 
             user.profile.attempts_count += 1
+            user.profile.save()
             if user.profile.attempts_count >= django.conf.settings.MAX_AUTH_ATTEMPTS:
                 user.is_active = False
                 user.profile.block_date = django.utils.timezone.now()
@@ -51,7 +52,5 @@ class AuthBackend(django.contrib.auth.backends.ModelBackend):
                     "Превышено количество попыток входа. Aккаунт заблокирован."
                     " Для разблокировки проверьте вашу эл. почту",
                 )
-
-            user.profile.save()  # хоть эта строчка не нужна на всякий случай пусть будет
 
         return None

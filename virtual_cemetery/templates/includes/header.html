@@ -10,6 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       {% with request.resolver_match.view_name as view_name %}
       <ul class="navbar-nav ms-auto">
+          <div class="nav-item">
+            {% if view_name == 'animals:add-animal' %}
+                <button class="btn btn-primary disabled" type="button">{% trans 'Создать пост' %}</button>
+            {% else %}
+                <a class="btn btn-primary" href="{% url 'animals:add-animal' %}">{% trans 'Создать пост' %}</a>
+            {% endif %}
+          </div>
           {% if user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">{% trans 'Админ-панель' %}</a>

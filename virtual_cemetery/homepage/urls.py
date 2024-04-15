@@ -1,9 +1,9 @@
 import django.urls
 
-import homepage.views
+import animals.views
 
 app_name = "homepage"
 
 urlpatterns = [
-    django.urls.path("", homepage.views.home, name="home"),
+    django.urls.path("", animals.views.homepage_animals_view, name="home"),
 ]

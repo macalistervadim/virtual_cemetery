@@ -1,4 +1,5 @@
 import django.contrib
+import django.contrib.auth.decorators
 import django.shortcuts
 import django.utils.translation as translation
 
@@ -34,7 +35,8 @@ def feedback_view(request):
 
                 for uploaded_file in request.FILES.getlist("files"):
                     feedback.models.FeedbackFiles.objects.create(
-                        feedback=feedback_instance, files=uploaded_file,
+                        feedback=feedback_instance,
+                        files=uploaded_file,
                     )
 
                 django.contrib.messages.success(

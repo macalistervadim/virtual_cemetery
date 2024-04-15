@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}cloudpets - Создание нового поста{% endblock title %}
+
+{% block content %}
+    <h3 class="mt-5 mb-4">Создание нового поста</h3>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-warning btn-block mt-4">Создать</button>
+  </form>
+{% endblock content %}

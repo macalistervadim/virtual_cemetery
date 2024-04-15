@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block content %}
+{% include "includes/messages.html" %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg">
+                {% if animal.main_image %}
+                <img src="{{ animal.get_image_500x500.url }}" class="card-img-top" alt="{{ animal.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text"><strong>Автор:</strong> {{ user.first_name }}</p>
+                    <h5 class="card-title">{{ animal.name }}</h5>
+                    {% if animal.biography %}
+                    <p class="card-text">{{ animal.biography }}</p>
+                    {% endif %}
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        {% if animal.date_of_birth %}
+                        <p class="card-text"><strong>Дата рождения:</strong> {{ animal.date_of_birth }}</p>
+                        {% endif %}
+                        {% if animal.date_of_death %}
+                        <p class="card-text"><strong>Дата смерти:</strong> {{ animal.date_of_death }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

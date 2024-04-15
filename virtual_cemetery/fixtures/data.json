@@ -1,27 +1,41 @@
 [
 {
-  "model": "feedback.feedback",
-  "pk": 14,
+  "model": "animals.animal",
+  "pk": 7,
   "fields": {
     "user": 1,
-    "theme": 1,
-    "text": "sdfsd"
+    "name": "выаавыаыв",
+    "biography": "",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-15",
+    "main_image": ""
   }
 },
 {
-  "model": "feedback.feedbackfiles",
-  "pk": 13,
+  "model": "animals.animal",
+  "pk": 8,
   "fields": {
-    "feedback": 14,
-    "files": "feedback/14/8ea76aba-f958-48e5-8dc6-3f5c628798f6.mp4"
+    "user": 1,
+    "name": "блаблабла",
+    "biography": "ывааываывааывыав",
+    "date_of_birth": "2024-04-15",
+    "date_of_death": "2024-04-15",
+    "created_on": "2024-04-15",
+    "main_image": "animals/None/de5447d3-5cb4-4d7a-9a91-4ad287c97ae0.jpg"
   }
 },
 {
-  "model": "feedback.feedbackfiles",
-  "pk": 14,
+  "model": "animals.animal",
+  "pk": 9,
   "fields": {
-    "feedback": 14,
-    "files": "feedback/14/bcc35723-6ca7-4cbd-81b4-4ae0fd4ea5c3.jpg"
+    "user": 1,
+    "name": "dfssdfsfd",
+    "biography": "dsffsd",
+    "date_of_birth": "2007-02-21",
+    "date_of_death": "2024-05-02",
+    "created_on": "2024-04-15",
+    "main_image": ""
   }
 }
 ]

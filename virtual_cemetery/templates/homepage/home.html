@@ -1,7 +1,24 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 
-
 {% block content %}
-<h1>{% trans 'Cooming soon' %}</h1>
+<div class="row">
+    {% for animal in animals %}
+    <div class="col-md-3 mb-3">
+        <div class="card">
+            {% if animal.main_image %}
+            <img src="{{ animal.get_image_200x200.url }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ animal.name }}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'animals:animal-detail' animal.pk %}" class="btn btn-warning stretched-link">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <h1>Похоже ничего нет)</h1>
+    {% endfor %}
+</div>
 {% endblock %}
