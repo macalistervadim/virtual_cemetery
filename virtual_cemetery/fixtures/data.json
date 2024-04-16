@@ -1,41 +1,176 @@
 [
 {
   "model": "animals.animal",
-  "pk": 7,
+  "pk": 12,
   "fields": {
     "user": 1,
-    "name": "выаавыаыв",
-    "biography": "",
+    "name": "тестовый",
+    "biography": "тестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовыйтестовый",
     "date_of_birth": null,
     "date_of_death": null,
-    "created_on": "2024-04-15",
-    "main_image": ""
+    "created_on": "2024-04-16",
+    "main_image": "animals/12/96749b07-57de-491f-9337-b3d802d9711c.jpg"
   }
 },
 {
   "model": "animals.animal",
-  "pk": 8,
+  "pk": 13,
   "fields": {
     "user": 1,
-    "name": "блаблабла",
-    "biography": "ывааываывааывыав",
-    "date_of_birth": "2024-04-15",
-    "date_of_death": "2024-04-15",
-    "created_on": "2024-04-15",
-    "main_image": "animals/None/de5447d3-5cb4-4d7a-9a91-4ad287c97ae0.jpg"
+    "name": "еще одна тестовая",
+    "biography": "@django.contrib.auth.decorators.login_required\r\ndef add_new_animal(request):\r\n    template = \"animals/add_new_animal.html\"\r\n\r\n    if request.method == \"POST\":\r\n        form = animals.forms.AddNewAnimalForm(request.POST or None, request.FILES or None)\r\n        if form.is_valid():\r\n            new_animal = form.save(commit=False)\r\n            new_animal.user = request.user\r\n            new_animal.save()\r\n\r\n            # Обновляем форму, чтобы получить правильный instance\r\n            form = animals.forms.AddNewAnimalForm(request.POST or None, request.FILES or None, instance=new_animal)\r\n\r\n            django.contrib.messages.success(\r\n                request,\r\n                translation.gettext_lazy(\r\n                    \"Новый пост успешно добавлен.\",\r\n                ),\r\n            )\r\n\r\n            return django.shortcuts.redirect(\"animals:animal-detail\", pk=new_animal.pk)\r\n\r\n    else:\r\n        form = animals.forms.AddNewAnimalForm()\r\n\r\n    return django.shortcuts.render(request, template, {\"form\": form})",
+    "date_of_birth": "2024-04-16",
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/None/b987b55e-8000-4ab2-bec8-e435cf596bae.jpg"
   }
 },
 {
   "model": "animals.animal",
-  "pk": 9,
+  "pk": 14,
   "fields": {
     "user": 1,
-    "name": "dfssdfsfd",
-    "biography": "dsffsd",
-    "date_of_birth": "2007-02-21",
-    "date_of_death": "2024-05-02",
-    "created_on": "2024-04-15",
-    "main_image": ""
+    "name": "sdfdf",
+    "biography": "dfssdfsdf",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/None/d06813e7-70db-402d-987e-e54c71b14e42.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 15,
+  "fields": {
+    "user": 1,
+    "name": "sdfsdsdf",
+    "biography": "dsfsdfsdfsdf",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/15/a2158534-3ad9-48f2-80a9-ea2baeca7637.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 16,
+  "fields": {
+    "user": 1,
+    "name": "fdgdfgdf",
+    "biography": "dfgdgfdgf",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/None/b83148c5-7c65-44a9-b194-452998bb4eb6.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 17,
+  "fields": {
+    "user": 1,
+    "name": "fdggf",
+    "biography": "fdgdfgdfg",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/None/e23e094e-ad1b-4c19-9d81-0e1cd30adcdd.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 18,
+  "fields": {
+    "user": 1,
+    "name": "fdggf",
+    "biography": "fdgdfgdfg",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/18/18.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 19,
+  "fields": {
+    "user": 1,
+    "name": "fdggf",
+    "biography": "fdgdfgdfg",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/19/19.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 20,
+  "fields": {
+    "user": 1,
+    "name": "SDFSDFSDF",
+    "biography": "SDFSDFSDF",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/None/f85317f0-05b5-4121-b0e4-6f6eccd52081.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 21,
+  "fields": {
+    "user": 1,
+    "name": "ываваыыва",
+    "biography": "выаываыаыва",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/21/21.jpg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 22,
+  "fields": {
+    "user": 1,
+    "name": "ывааываыв",
+    "biography": "ываыавывааыв",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/1ac59c8b-c03a-4fab-b5c3-798a0beb8d99/1ac59c8b-c03a-4fab-b5c3-798a0beb8d99.jpeg"
+  }
+},
+{
+  "model": "animals.animal",
+  "pk": 23,
+  "fields": {
+    "user": 1,
+    "name": "ываываыав",
+    "biography": "ываываываыва",
+    "date_of_birth": null,
+    "date_of_death": null,
+    "created_on": "2024-04-16",
+    "main_image": "animals/23/23.jpg"
+  }
+},
+{
+  "model": "feedback.feedback",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "theme": 2,
+    "text": "ыасываваыыав",
+    "created_on": "2024-04-16"
+  }
+},
+{
+  "model": "feedback.feedbackfiles",
+  "pk": 3,
+  "fields": {
+    "feedback": 2,
+    "files": "feedback/2/71ad97ab-c775-4a82-99ba-32b8936b165e.jpg"
   }
 }
 ]

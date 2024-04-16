@@ -7,7 +7,7 @@ import feedback.forms
 import feedback.models
 
 
-@django.contrib.auth.decorators.login_required
+@django.contrib.auth.decorators.login_required(login_url="users:login")
 def feedback_view(request):
     template = "feedback/feedback.html"
     user = request.user

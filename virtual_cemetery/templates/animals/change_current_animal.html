@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}cloudpets - Редактирование публикации{% endblock title %}
+
+{% block content %}
+    <h3 class="mt-5 mb-4">Отредактируйте вашу запись</h3>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-warning btn-block mt-4">Сохранить</button>
+  </form>
+{% endblock content %}

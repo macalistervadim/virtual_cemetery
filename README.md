@@ -1,60 +1,74 @@
-# How to get started with the application 📝
+[![Build Status](https://img.shields.io/gitlab/pipeline/{project_id}/{branch})](https://gitlab.com/{project_id}/-/pipelines)
+[![Coverage](https://img.shields.io/gitlab/coverage/{project_id}/{branch})](https://gitlab.com/{project_id}/-/graphs/main)
+[![License](https://img.shields.io/gitlab/license/{project_id})](https://gitlab.com/{project_id})
+[![Version](https://img.shields.io/gitlab/v/{project_id})](https://gitlab.com/{project_id}/-/releases)
+[![Downloads](https://img.shields.io/gitlab/downloads/{project_id}/total)](https://gitlab.com/{project_id}/-/jobs)
+[![Stars](https://img.shields.io/gitlab/stars/{project_id})](https://gitlab.com/{project_id})
+[![Issues](https://img.shields.io/gitlab/issues/{project_id})](https://gitlab.com/{project_id}/-/issues)
+[![Merge Requests](https://img.shields.io/gitlab/mr/{project_id})](https://gitlab.com/{project_id}/-/merge_requests)
+[![Last Commit](https://img.shields.io/gitlab/last-commit/{project_id})](https://gitlab.com/{project_id}/-/commits/main)
+[![Pipeline Status](https://gitlab.crja72.ru/django/2024/spring/course/projects/team-6/badges/main/pipeline.svg)](https://gitlab.crja72.ru/django/2024/spring/course/projects/team-6/pipelines)
 
-## Run the app 🚀
+# Запуск приложения 🚀
+Чтобы запустить приложение локально, выполните следующие шаги:
 
-To run the app locally, follow these steps:
+Откройте терминал.
 
-Open your terminal.
-1. Navigate to the "projects" directory: `cd ~/projects` (to select this folder, create this directory in your directory or specify any of your previously created ones)
-2. Clone the repository: `git clone {repository_url}`
-3. Navigate to the project directory: `cd virtual_cemetery`
-4. Create and activate a virtual environment:
-   - Linux/macOS: `python3 -m venv venv && source venv/bin/activate`
-   - Windows: `python -m venv venv && venv\Scripts\activate`
-5. Install the main dependencies for production: `pip3 install -r requirements/production.txt`
-6. Set up your database: `python3 manage.py migrate`
-7. Create a superuser: `python3 manage.py createsuperuser`
-8. Create a `.env` file in the root of your project and define your environment variables (see below for example variables)
-9. Run the development server: `python3 manage.py runserver`
-10. Access the app at [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
+1. Перейдите в каталог "projects": `cd ~/projects` (чтобы выбрать эту папку, создайте ее в своем каталоге или укажите любую из ранее созданных)
+2. Клонируйте репозиторий: `git clone {repository_url}`
+3. Перейдите в каталог проекта: `cd virtual_cemetery`
+4. Создайте и активируйте виртуальное окружение:
 
-# Important note
-Please note that all the following points below are executed strictly in the base directory of the project, in which you have compiled the repository earlier in the paragraph above
+   `Linux/macOS: python3 -m venv venv && source venv/bin/activate`
 
-## Database
-The project uses a ready-made database for educational purposes.
+   `Windows: python -m venv venv && venv\Scripts\activate`
+5. Установите основные зависимости для продакшена: 
 
-Open your terminal.
-1. Perform database migrations:
+   `pip3 install -r requirements/production.txt`
+6. Настройте базу данных: `python3 manage.py migrate`
+7. Создайте суперпользователя: `python3 manage.py createsuperuser`
+8. Создайте файл .env в корне вашего проекта и определите ваши переменные окружения (см. ниже пример переменных)
+9. Запустите сервер разработки:` python3 manage.py runserver`
+10. Перейдите к приложению по адресу `http://127.0.0.1:8000/` в вашем браузере.
+
+## Важное примечание
+Обратите внимание, что все следующие шаги ниже выполняются строго в базовом каталоге проекта, в котором вы ранее скомпилировали репозиторий в параграфе выше
+
+## База данных
+Проект использует готовую базу данных для тестирования приложения.
+
+Откройте ваш терминал.
+
+Выполните миграции базы данных:
 ```
 python3 manage.py migrate
 ```
-
-2. To use superuser, use the following data:
+Для использования суперпользователя используйте следующие данные:
 ```
-login: admin
-password: admin
+логин: admin
+пароль: admin
 ```
 
-*note: mail is not used in the project for superuser*
+`Примечание:` почта не используется в проекте для суперпользователя
 
-## Collectstatic
+## Статические файлы
 
-To work correctly and display static files in prod mode, you need to perform a couple of procedures before starting the project
+Для корректной работы и отображения статических файлов в режиме продакшн необходимо выполнить несколько процедур перед запуском проекта
 
-1. Generate static files
+Сгенерируйте статические файлы
+
 ```
 python3 manage.py collectstatic
 ```
 
-*note: Please note that the folder where static files will be collected is specified in the project settings under the name "STATIC_ROOT"*
+`Примечание:` обратите внимание, что папка, в которой будут собраны статические файлы, указывается в настройках проекта константы "STATIC_ROOT"
 
-## Environment Variables
+## Переменные окружения
 
-The project uses a `.env` file to store confidential or environment variables required for the application to run. Below is the format of the `.env` file.
-To get started with the project, you'll need to copy the `.env.example` file and configure it accordingly.
+Проект использует файл `.env` для хранения конфиденциальных или переменных окружения, необходимых для запуска приложения. Ниже приведен формат файла `.env.`
+Для начала работы с проектом вам нужно скопировать файл `.env.example` и настроить его соответственно.
 
-1. Copy the `.env.example` file:
+1. Скопируйте `.env.example` файл:
    
    Linux:
    ```bash
@@ -65,40 +79,33 @@ To get started with the project, you'll need to copy the `.env.example` file and
    copy .env.example .env
    ```
 
-2. Open the `.env` file and set the required environment variables:
+2. Откройте файл `.env` и установите там свои значения:
     ```plaintext
-    # Example .env file
-
-    # Django secret key
+    # DJANGO_SECRET_KEY
     `DJANGO_SECRET_KEY=your_secret_key_here`
     
-    # Django debug
-    `DJANGO_DEBUG=True/False`
+    # DEBUG
+    `DEBUG=True/False`
 
-    # DJANGO allowed hosts
+    # DJANGO_ALLOWED_HOSTS
     `DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost`
 
-    # DJANGO_MAIL
-    `DJANGO_MAIL=admin@admin.ru`
+    # DEFAULT_FROM_EMAIL
+    `DEFAULT_FROM_EMAIL=admin@admin.ru`
 
-    # DJANGO_ALLOW_REVERSE
-    `DJANGO_ALLOW_REVERSE=True/False`
-   
-    # DEFAULT_USER_IS_ACTIVE
-    `DEFAULT_USER_IS_ACTIVE=True/False`
     # Other environment variables...
     ```
 
-## Managing Translations
+## Управление языками сайта
 
-1. Create translation files: `django-admin makemessages -l ru` and `django-admin makemessages -l en`
-2. Edit translation files: Use a text editor to modify the `.po` files and add translations for the strings.
-3. Compile translation files: `django-admin compilemessages`
+1. Создайте файлы с переводами, выполните команды: `django-admin makemessages -l ru` и `django-admin makemessages -l en`
+2. Отредактируйте переводы: Откройте файл `.po` и замените там пустые строки на строки соответствующего перевода
+3. Скомпилируйте готовые переводы: `django-admin compilemessages`
 
-Replace <language_code> with the desired language code for the translation. For example, for English, you can use en, and for Spanish, you can use es.
+Замените `<language_code>` на желаемый код языка для перевода. Например, для английского языка вы можете использовать `en`, а для испанского - `es`.
 
-Standard Language Codes
-Here are some standard language codes that you can use:
+Стандартные коды языков
+Вот некоторые стандартные коды языков, которые вы можете использовать:
 ```
 en: English
 es: Spanish
@@ -106,18 +113,18 @@ fr: French
 de: German
 ru: Russian
 ```
-Predefined Translations
-Additionally, Django provides predefined translations for certain languages. You can find the list of available languages in the Django documentation:
 
-[Django - Available languages](http://www.lingoes.net/en/translator/langcode.htm)
+Кроме того, Django предоставляет предопределенные переводы для определенных языков. Вы можете найти список доступных языков в документации Django:
 
-When using the makemessages command, Django will automatically create translation files for the specified language using the predefined translations if available.
+[Django - Доступные языки](http://www.lingoes.net/en/translator/langcode.htm)
 
-## Fixtures
+При использовании команды `makemessages` Django автоматически создаст файлы перевода для указанного языка, используя предопределенные переводы, если они доступны.
 
-To use fixtures in your Django project, follow these steps:
+## Фикстуры
 
-1. Create fixture files containing serialized data for your models. You can generate fixture files using the `dumpdata` management command:
+Чтобы использовать фикстуры в вашем проекте Django, выполните следующие шаги:
+
+1. Создайте файлы фикстур, содержащие сериализованные данные для ваших моделей. Вы можете сгенерировать файлы фикстур с помощью команды управления `dumpdata`:
 
    Windows:
    ```
@@ -128,7 +135,8 @@ To use fixtures in your Django project, follow these steps:
    python3 manage.py dumpdata dumpdata animals feedback homepage --indent 2 -o fixtures/data.json 
    ```
    
-2. Load fixture data into your database using the loaddata management command:
+2. Загрузите данные фикстуры в вашу базу данных, используя команду управления `loaddata`:
+
    Windows:
    ```
    python manage.py loaddata fixtures/data.json 
@@ -137,11 +145,10 @@ To use fixtures in your Django project, follow these steps:
    ```
    python3 manage.py loaddata fixtures/data.json 
    ```
-*note: you can also specify fixtures/data instead of the name.json your folder if desired. But it must be located along the path: BASE_DIR / dir_name*
 
-## ER Diagram
-Here is a visual ER diagram of the existing project database
+`Примечание:` если желаете, вы также можете указать `fixtures/data` вместо `name.json` вашей папки. Но она должна находиться по пути: `BASE_DIR / dir_name`
+
+## ER Диаграмма
+Вот визуальная ER-диаграмма базы данных существующего проекта
 
 ![ER Diagram](ER.png)
-
-**Note**: This app is intended as a demonstration and might not be suitable for production use without further modifications and security considerations.

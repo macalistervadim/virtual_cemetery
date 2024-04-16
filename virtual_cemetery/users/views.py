@@ -17,6 +17,8 @@ import django.utils
 import django.utils.translation as translation
 import django.views
 
+import animals.models
+import feedback.models
 import users.forms
 import users.models
 
@@ -25,18 +27,24 @@ class CustomPasswordResetView(django.contrib.auth.views.PasswordResetView):
     form_class = users.forms.CustomPasswordResetForm
 
 
-@django.contrib.auth.decorators.login_required
+@django.contrib.auth.decorators.login_required(login_url="users:login")
 def profile_user(request):
     user = request.user
     template = "users/profile/profile_user.html"
 
+    posts = animals.models.Animal.objects.get_animal_current_user(request.user)
+    feedbacks = feedback.models.Feedback.objects.get_feedbacks_list(request.user)
+
     context = {
         "user": user,
+        "posts": posts,
+        "feedbacks": feedbacks,
     }
+
     return django.shortcuts.render(request, template, context)
 
 
-@django.contrib.auth.decorators.login_required
+@django.contrib.auth.decorators.login_required(login_url="users:login")
 def profile_user_change(request):
     template = "users/profile/profile_user_change.html"
 

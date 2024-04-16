@@ -7,6 +7,8 @@ import django.db
 import django.forms
 import django.utils.translation as translation
 
+import feedback.managers
+
 
 def item_directory_path(instance, filename):
     ext = filename.split(".")[-1]
@@ -16,6 +18,8 @@ def item_directory_path(instance, filename):
 
 
 class Feedback(django.db.models.Model):
+    objects = feedback.managers.FeedbackManager()
+
     class _FeedbackTheme(django.db.models.IntegerChoices):
         ACCOUNT = 1, translation.gettext_lazy("Учетная запись")
         TECHNICAL_PROBLEMS = 2, translation.gettext_lazy("Технические проблемы")
@@ -32,6 +36,11 @@ class Feedback(django.db.models.Model):
     )
     text = django.db.models.TextField(
         translation.gettext_lazy("текст обращения"),
+    )
+    created_on = django.db.models.DateField(
+        translation.gettext_lazy("создано"),
+        auto_now_add=True,
+        editable=False,
     )
 
     class Meta:

@@ -60,8 +60,8 @@ msgstr ""
 
 #: .\virtual_cemetery\settings.py:106
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: .\virtual_cemetery\settings.py:107
 msgid "Russian"
-msgstr ""
+msgstr "Русский"

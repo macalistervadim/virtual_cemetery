@@ -9,7 +9,7 @@ class AnimalManager(django.db.models.Manager):
         queryset = (
             self.get_queryset()
             .order_by(
-                animals.models.Animal.created_on.field.name,
+                "-" + animals.models.Animal.created_on.field.name,
             )
             .only(
                 animals.models.Animal.name.field.name,
@@ -33,5 +33,11 @@ class AnimalManager(django.db.models.Manager):
                 animals.models.Animal.date_of_birth.field.name,
                 animals.models.Animal.date_of_death.field.name,
             )
+        )
+        return queryset
+
+    def get_animal_current_user(self, user):
+        queryset = self.get_animals_list().filter(
+            user=user,
         )
         return queryset

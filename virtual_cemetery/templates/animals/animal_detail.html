@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
 {% include "includes/messages.html" %}
@@ -9,6 +10,9 @@
             <div class="card border-0 shadow-lg">
                 {% if animal.main_image %}
                 <img src="{{ animal.get_image_500x500.url }}" class="card-img-top" alt="{{ animal.name }}">
+                {% endif %}
+                {% if animal.user == request.user %}
+                <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary">Редактировать</a>
                 {% endif %}
                 <div class="card-body">
                     <p class="card-text"><strong>Автор:</strong> {{ user.first_name }}</p>

@@ -1,5 +1,6 @@
 import django.contrib
 import django.urls
+import django.views
 
 urlpatterns = [
     django.urls.path("admin/", django.contrib.admin.site.urls),
@@ -7,6 +8,11 @@ urlpatterns = [
     django.urls.path("animals/", django.urls.include("animals.urls")),
     django.urls.path("users/", django.urls.include("users.urls")),
     django.urls.path("feedback/", django.urls.include("feedback.urls")),
+    django.urls.path(
+        "set-language/",
+        django.views.i18n.set_language,
+        name="set-language",
+    ),
 ]
 
 if django.conf.settings.DEBUG:

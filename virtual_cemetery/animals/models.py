@@ -13,8 +13,8 @@ import animals.managers
 
 def item_directory_path(instance, filename):
     ext = filename.split(".")[-1]
-    filename = f"{uuid.uuid4()}.{ext}"
-    animal_id = str(instance.id)
+    animal_id = str(instance.pk) if instance.pk else str(uuid.uuid4())
+    filename = f"{animal_id}.{ext}"
     return pathlib.Path("animals") / animal_id / filename
 
 
