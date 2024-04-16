@@ -1,13 +1,5 @@
-[![Build Status](https://img.shields.io/gitlab/pipeline/{project_id}/{branch})](https://gitlab.com/{project_id}/-/pipelines)
-[![Coverage](https://img.shields.io/gitlab/coverage/{project_id}/{branch})](https://gitlab.com/{project_id}/-/graphs/main)
-[![License](https://img.shields.io/gitlab/license/{project_id})](https://gitlab.com/{project_id})
-[![Version](https://img.shields.io/gitlab/v/{project_id})](https://gitlab.com/{project_id}/-/releases)
-[![Downloads](https://img.shields.io/gitlab/downloads/{project_id}/total)](https://gitlab.com/{project_id}/-/jobs)
-[![Stars](https://img.shields.io/gitlab/stars/{project_id})](https://gitlab.com/{project_id})
-[![Issues](https://img.shields.io/gitlab/issues/{project_id})](https://gitlab.com/{project_id}/-/issues)
-[![Merge Requests](https://img.shields.io/gitlab/mr/{project_id})](https://gitlab.com/{project_id}/-/merge_requests)
-[![Last Commit](https://img.shields.io/gitlab/last-commit/{project_id})](https://gitlab.com/{project_id}/-/commits/main)
 [![Pipeline Status](https://gitlab.crja72.ru/django/2024/spring/course/projects/team-6/badges/main/pipeline.svg)](https://gitlab.crja72.ru/django/2024/spring/course/projects/team-6/pipelines)
+
 
 # Запуск приложения 🚀
 Чтобы запустить приложение локально, выполните следующие шаги:
