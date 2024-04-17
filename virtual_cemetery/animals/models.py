@@ -58,8 +58,6 @@ class Animal(django.db.models.Model):
     main_image = sorl.thumbnail.ImageField(
         translation.gettext_lazy("Изображение питомца"),
         help_text=translation.gettext_lazy("Загрузите изображение вашего питомца"),
-        blank=True,
-        null=True,
         upload_to=item_directory_path,
     )
 
@@ -117,7 +115,7 @@ class AnimalComments(django.db.models.Model):
         on_delete=django.db.models.CASCADE,
         related_name="animal_comments",
     )
-    user = django.db.models.OneToOneField(
+    user = django.db.models.ForeignKey(
         django.contrib.auth.models.User,
         on_delete=django.db.models.CASCADE,
     )

@@ -28,7 +28,8 @@ def animal_detail(request, pk):
         if form.is_valid():
             if request.user == animal.user:
                 django.contrib.messages.error(
-                    request, "Вы не можете оставлять комментарии к своим собственным постам.",
+                    request,
+                    "Вы не можете оставлять комментарии к своим собственным постам.",
                 )
                 return django.shortcuts.redirect("animals:animal-detail", pk=pk)
 
