@@ -8,9 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% trans 'cloudpets - Виртуальное кладбище домашних животных' %}{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/roboto.css' %}"> <!-- шрифты -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- кастомные стили -->
   <link rel="icon" type="image/x-icon" href="{% static 'img/fav/favicon.ico' %}">
 </head>
-<body>
+<body class='Roboto-font'>
 
 {% include 'includes/header.html' %}
 
@@ -18,9 +20,10 @@
   {% block content %}
   {% endblock content %}
 </div>
-
+<div style="height:1500px"></div>
 {% include 'includes/footer.html' %}
 
+<script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

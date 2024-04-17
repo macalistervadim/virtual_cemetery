@@ -1,63 +1,61 @@
 <!DOCTYPE html>
 {% load i18n %}
 {% load static %}
-<header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-  {% load static %}
-  {% load i18n %}
-  <a class="navbar-brand" href="{% url 'homepage:home' %}">
-      <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="Logo" width="85" height="85">
-  </a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      {% with request.resolver_match.view_name as view_name %}
-      <ul class="navbar-nav ms-auto">
-          {% if user.is_superuser %}
-          <li class="nav-item">
-            <a class="nav-link {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">{% trans 'Админ-панель' %}</a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
+
+
+<header class="p-3 text-bg-dark header js-header">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between" style="font-weight: bold;">
+        {% with request.resolver_match.view_name as view_name %}
+        <div class="nav-link-block"> 
+          
+          <a class="navbar-brand" href="{% url 'homepage:home' %}">
+            <img src="{% static 'img/cloudpets-header-logo1.png' %}" alt="Logo" width="70" height="70">
+          </a>
+          
+
               {% if view_name == 'homepage:home' %}
-                  <span class="nav-link disabled">{% trans 'Главная' %}</span>
-              {% else %}
-                  <a class="nav-link" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
-              {% endif %}
-          </li>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            {% if view_name == 'feedback:feedback' %}
-                <span class="nav-link disabled">{% trans 'Обратная связь' %}</span>
-            {% else %}
-                <a class="nav-link" href="{% url 'feedback:feedback' %}">{% trans 'Обратная связь' %}</a>
-            {% endif %}
-          </li>
-            <li class="nav-item">
-            {% if view_name == 'users:profile' %}
-                <span class="nav-link disabled">{% trans 'Личный кабинет' %}</span>
-            {% else %}
-                <a class="nav-link" href="{% url 'users:profile' %}">{% trans 'Личный кабинет' %}</a>
-            {% endif %}
-            </li>
-            <div class="nav-item">
-              {% if view_name == 'animals:add-animal' %}
-                  <button class="btn btn-primary disabled" type="button">{% trans 'Создать пост' %}</button>
-              {% else %}
-                  <a class="btn btn-primary" href="{% url 'animals:add-animal' %}">{% trans 'Создать пост' %}</a>
-              {% endif %}
-            </div>
-            <form action="{% url 'users:logout' %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-warning">Выйти</button>
-            </form>
-            {% else %}
-          <button type="button" class="btn btn-outline-light me-2" onclick="location.href='{% url "users:login" %}';">Войти</button>
-          <button type="button" class="btn btn-warning" onclick="location.href='{% url "users:signup" %}';">Регистрация</button>
-          {% endif %}
+                    <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Главная' %}</span>
+                {% else %}
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
+                {% endif %}
+              
+              {% if user.is_authenticated %}
+                {% if view_name == 'feedback:feedback' %}
+                    <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Обратная связь' %}</span>
+                {% else %}
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'feedback:feedback' %}">{% trans 'Обратная связь' %}</a>
+                {% endif %}
+
+                {% if view_name == 'users:profile' %}
+                  <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Личный кабинет' %}</span>
+                {% else %}
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'users:profile' %}">{% trans 'Личный кабинет' %}</a>
+                {% endif %}
+
+                {% endif %}
           </div>
-      </ul>
-    {% endwith %}
+
+          <div class="nav-link-block">
+            {% if user.is_authenticated %}
+              {% if view_name == 'animals:add-animal' %}
+                  <button class="btn btn-outline-secondary disabled" type="button">{% trans 'Создать пост' %}</button>
+              {% else %}
+                  <a class="btn btn-outline-primary" href="{% url 'animals:add-animal' %}">{% trans 'Создать пост' %}</a>
+              {% endif %}
+          
+                <form action="{% url 'users:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light">Выйти</button>
+                </form>
+     
+              {% else %}
+                <button type="button" class="btn btn-outline-light" onclick="location.href='{% url "users:login" %}';">Войти</button>
+                <button type="button" class="btn btn-outline-info" onclick="location.href='{% url "users:signup" %}';">Регистрация</button>
+              {% endif %}
+          </div>
+
+        {% endwith %}
+      </div>
     </div>
-  </div>
-</nav>
-</header>
+  </header>
