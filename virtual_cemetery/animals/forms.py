@@ -26,3 +26,9 @@ class AddNewAnimalForm(BootstrapFormMixin, django.forms.ModelForm):
             "date_of_birth": django.forms.DateInput(attrs={"type": "date"}),
             "date_of_death": django.forms.DateInput(attrs={"type": "date"}),
         }
+
+
+class AddNewAnimalComment(BootstrapFormMixin, django.forms.ModelForm):
+    class Meta:
+        model = animals.models.AnimalComments
+        fields = (animals.models.AnimalComments.comment.field.name,)

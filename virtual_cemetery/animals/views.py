@@ -21,10 +21,41 @@ def homepage_animals_view(request):
 
 def animal_detail(request, pk):
     template = "animals/animal_detail.html"
-    animal = animals.models.Animal.objects.get_animal_detail(pk=pk).first()
+    animal = animals.models.Animal.objects.get_animal_detail(pk=pk)
+
+    if request.method == "POST":
+        form = animals.forms.AddNewAnimalComment(request.POST)
+        if form.is_valid():
+            if request.user == animal.user:
+                django.contrib.messages.error(
+                    request,
+                    "Вы не можете оставлять комментарии к своим собственным постам.",
+                )
+                return django.shortcuts.redirect("animals:animal-detail", pk=pk)
+
+            if animal.animal_comments.filter(user=request.user).exists():
+                django.contrib.messages.error(request, "Вы уже оставили комментарий к этому посту.")
+                return django.shortcuts.redirect("animals:animal-detail", pk=pk)
+
+            animal_comment = form.save(commit=False)
+            animal_comment.user = request.user
+            animal_comment.animal_id = animal.pk
+            animal_comment.save()
+
+            django.contrib.messages.success(
+                request,
+                translation.gettext_lazy(
+                    "Комментарий успешно оставлен",
+                ),
+            )
+
+            return django.shortcuts.redirect("animals:animal-detail", pk=animal.pk)
+    else:
+        form = animals.forms.AddNewAnimalComment()
 
     context = {
         "animal": animal,
+        "form": form,
     }
 
     return django.shortcuts.render(request, template, context)

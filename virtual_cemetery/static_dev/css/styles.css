@@ -6,7 +6,6 @@
     font-family: 'DeadFontWalking'
 }
 
-
 .header {
     width: 100%;
     top: -100px;
@@ -45,7 +44,7 @@
   }
   
   .nav-box:hover::before {
-    
+    opacity: 0.85;
   }
 
 .underline {

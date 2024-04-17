@@ -3,23 +3,35 @@
 {% load static %}
 
 
-<header class="p-3 text-bg-dark header js-header">
+<header class="p-3 text-white" style="background-color: #000000;">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between" style="font-weight: bold;">
         {% with request.resolver_match.view_name as view_name %}
         <div class="nav-link-block"> 
           
-          <a class="navbar-brand" href="{% url 'homepage:home' %}">
-            <img src="{% static 'img/cloudpets-header-logo1.png' %}" alt="Logo" width="70" height="70">
+          <a class="navbar-brand mr-1" href="{% url 'homepage:home' %}" style="margin-right:30px;">
+            <img src="{% static 'img/cloudpets-header-logo1.png' %}" alt="Logo" width="50" height="50">
           </a>
           
 
               {% if view_name == 'homepage:home' %}
-                    <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Главная' %}</span>
+                  <span class="nav-link px-2 text-white underline disabled nav-box ">{% trans 'Главная' %}</span>
                 {% else %}
-                    <a class="nav-link px-2 text-white nav-box" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
+                  <a class="nav-link px-2 text-white nav-box" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
                 {% endif %}
-              
+
+              {% if view_name == 'faq:faq' %}
+                <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'FAQ' %}</span>
+              {% else %}
+                  <a class="nav-link px-2 text-white nav-box" href="{% url 'faq:faq' %}">{% trans 'FAQ' %}</a>
+              {% endif %}
+
+              {% if view_name == 'about:about' %}
+                <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'О нас' %}</span>
+              {% else %}
+                  <a class="nav-link px-2 text-white nav-box" href="{% url 'about:about' %}">{% trans 'О нас' %}</a>
+              {% endif %}
+
               {% if user.is_authenticated %}
                 {% if view_name == 'feedback:feedback' %}
                     <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Обратная связь' %}</span>
@@ -65,3 +77,4 @@
       </div>
     </div>
   </header>
+

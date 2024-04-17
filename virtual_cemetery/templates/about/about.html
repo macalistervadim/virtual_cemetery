@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}cloudpets - О нас{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Коротко о нас</h3>
+                    <p class="card-text">
+                        Мы - команда энтузиастов, создавшая виртуальное кладбище домашних животных "cloudpets".
+                        Наша миссия - сохранить память о наших любимых питомцах, которые ушли от нас, и создать
+                        уютное место для общения и поддержки тех, кто потерял своего верного друга.
+                    </p>
+                    <p class="card-text">
+                        Наши функции включают в себя:
+                    </p>
+                    <ul class="card-text">
+                        <li>Возможность создания виртуального памятника для вашего питомца.</li>
+                        <li>Обмен воспоминаниями и историями с другими владельцами домашних животных.</li>
+                        <li>Поддержка в трудные моменты и возможность выразить свои чувства в нашем сообществе.</li>
+                    </ul>
+                    <p class="card-text">
+                        Присоединяйтесь к нам сегодня и помогите нам сохранить память о наших пушистых друзьях!
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">cloudpets, создано с любовью.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8 text-center">
+            <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="cloudpets" class="img-fluid" style="max-width: 300px;">
+        </div>
+    </div>
+</div>
+{% endblock content %}
