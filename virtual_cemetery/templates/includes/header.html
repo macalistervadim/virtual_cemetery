@@ -38,6 +38,12 @@
 
           <div class="nav-link-block">
             {% if user.is_authenticated %}
+              {% if user.is_superuser %}
+              
+                <a class="nav-link px-2 text-white nav-box {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">{% trans 'Админ-панель' %}</a>
+              
+              {% endif %}
+  
               {% if view_name == 'animals:add-animal' %}
                   <button class="btn btn-outline-secondary disabled" type="button">{% trans 'Создать пост' %}</button>
               {% else %}

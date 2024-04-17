@@ -1,3 +1,12 @@
+.Roboto-font{
+    font-family: 'Roboto'
+}
+
+.unded-font{
+    font-family: 'DeadFontWalking'
+}
+
+
 .header {
     width: 100%;
     top: -100px;
@@ -10,9 +19,6 @@
     transform: translateY(100px);
 }
 
-.Roboto-font{
-    font-family: 'Roboto'
-}
 
 .nav-box {
     position: relative;
@@ -39,7 +45,7 @@
   }
   
   .nav-box:hover::before {
-    opacity: 0.85;
+    
   }
 
 .underline {
@@ -51,4 +57,83 @@
     column-gap: 15px;
     align-items: center;
 }
-  
+
+.main{
+    background: #F1F1F1;    
+}
+
+.main-content{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    row-gap: 35px;
+}
+
+.shadow-sm{
+    /* transition: transform 0.3s ease;     */
+    width: 26rem;
+    
+
+}
+
+.shadow-sm:hover{
+    /* transform: translateY(-5px) scale(1.1);; */
+    
+}
+
+.img-top{
+    transition: transform 0.3s ease; opacity: 1;;
+}
+
+.img-top:hover{
+    transform: translateY(-5px) scale(1.01) ;
+    opacity: 0.8   ;
+}
+
+/* .card-image{
+    max-width: 1320;
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    border-radius: 24px;
+}
+.content-info{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+    max-width: 1320;
+    width: 100%;
+
+}
+
+.bottom-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.bottom-info-l{
+    max-width: 700px;
+    width: 100%;
+}
+.bottom-info-r{
+    max-width: 506px;
+    padding-bottom: 20px;
+    width: 100%;
+
+}
+.param-big{
+    display: flex;  
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000000;
+
+}
+.param-small{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    border-bottom: 1px solid #000000;
+    font-weight: 400;
+
+} */

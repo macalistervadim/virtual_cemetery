@@ -3,23 +3,30 @@
 {% load static %}
 
 {% block content %}
-<div class="row">
-    {% for animal in animals %}
-    <div class="col-md-3 mb-3">
-        <div class="card">
-            {% if animal.main_image %}
-            <img src="{{ animal.get_image_200x200.url }}">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title">{{ animal.name }}</h5>
+    <div class="main-content">
+        {% for animal in animals %}
+            <div class="col">
+            
+                <a href="{% url 'animals:animal-detail' animal.pk %}" style="text-decoration: none;">
+                    <div class="card shadow-sm" >
+                        
+                        {% if animal.main_image %}
+                            <img src="{{ animal.get_image_200x200.url }}" class="card-img-top img-top" style="width:100%; ">
+                        {% endif %}
+                        
+                        <div class="card-body" >
+                            <h5 class="card-title">{{ animal.name }}</h5>
+                            <strong>Годы жизни: 2077-2077</strong>
+                            <br>
+                        </div>
+                    </div>
+                </a>
+                
             </div>
-            <div class="card-footer">
-                <a href="{% url 'animals:animal-detail' animal.pk %}" class="btn btn-warning stretched-link">Подробнее</a>
-            </div>
-        </div>
+
+    
+        {% empty %}
+        <h1>Похоже ничего нет)</h1>
+        {% endfor %}
     </div>
-    {% empty %}
-    <h1>Похоже ничего нет)</h1>
-    {% endfor %}
-</div>
 {% endblock %}
