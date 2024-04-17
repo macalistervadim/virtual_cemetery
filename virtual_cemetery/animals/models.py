@@ -115,6 +115,7 @@ class AnimalComments(django.db.models.Model):
     animal = django.db.models.ForeignKey(
         Animal,
         on_delete=django.db.models.CASCADE,
+        related_name="animal_comments",
     )
     user = django.db.models.OneToOneField(
         django.contrib.auth.models.User,

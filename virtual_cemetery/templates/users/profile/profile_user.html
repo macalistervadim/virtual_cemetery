@@ -26,6 +26,9 @@
                         {% else %}
                         {{ user.email }}
                         {% endif %}
+                        {% if user.is_superuser %}
+                        <span class="badge badge-danger ml-2 p-1"><span class="text-danger">Администратор</span></span>
+                        {% endif %}
                     </h2>
                     <div class="btn-group" role="group">
                         <a href="{% url 'users:profile_settings' %}" class="btn btn-warning btn-sm">Настройки</a>

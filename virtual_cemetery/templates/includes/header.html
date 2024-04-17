@@ -24,6 +24,20 @@
                   <a class="nav-link" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
               {% endif %}
           </li>
+          <li class="nav-item">
+            {% if view_name == 'about:about' %}
+                <span class="nav-link disabled">{% trans 'О нас' %}</span>
+            {% else %}
+                <a class="nav-link" href="{% url 'about:about' %}">{% trans 'О нас' %}</a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            {% if view_name == 'faq:faq' %}
+                <span class="nav-link disabled">{% trans 'FAQ' %}</span>
+            {% else %}
+                <a class="nav-link" href="{% url 'faq:faq' %}">{% trans 'FAQ' %}</a>
+            {% endif %}
+          </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
             {% if view_name == 'feedback:feedback' %}

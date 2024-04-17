@@ -19,22 +19,33 @@ class AnimalManager(django.db.models.Manager):
         return queryset
 
     def get_animal_detail(self, pk):
-        queryset = (
+        animal_queryset = (
             self.get_queryset()
-            .filter(
-                pk=pk,
-            )
+            .filter(pk=pk)
             .select_related("user")
             .only(
                 "user__first_name",
-                animals.models.Animal.name.field.name,
-                animals.models.Animal.main_image.field.name,
-                animals.models.Animal.biography.field.name,
-                animals.models.Animal.date_of_birth.field.name,
-                animals.models.Animal.date_of_death.field.name,
+                "name",
+                "main_image",
+                "biography",
+                "date_of_birth",
+                "date_of_death",
             )
         )
-        return queryset
+
+        comment_queryset = (
+            animals.models.AnimalComments.objects.filter(animal_id=pk)
+            .select_related("user")
+            .only(
+                "user__first_name",
+                "comment",
+            )
+        )
+
+        animal = animal_queryset.first()
+        animal.comments = comment_queryset
+
+        return animal
 
     def get_animal_current_user(self, user):
         queryset = self.get_animals_list().filter(

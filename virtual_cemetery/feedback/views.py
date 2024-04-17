@@ -45,6 +45,18 @@ def feedback_view(request):
                         "Обратная связь отправлена. Ожидайте ответа на почту.",
                     ),
                 )
+
+                django.core.mail.send_mail(
+                    django.template.loader.render_to_string(
+                        "feedback/sent_mail/feedback_subject.html",
+                    ),
+                    django.template.loader.render_to_string(
+                        "feedback/sent_mail/feedback_body.html",
+                    ),
+                    django.conf.settings.DEFAULT_FROM_EMAIL,
+                    [user.email],
+                    fail_silently=False,
+                )
                 return django.shortcuts.redirect("feedback:feedback")
     else:
         form = feedback.forms.FeedbackForm()
