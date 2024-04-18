@@ -1,10 +1,11 @@
 import django.db
 import django.utils.translation as translation
 
+import core.models
 import faq.managers
 
 
-class FaqQuestions(django.db.models.Model):
+class FaqQuestions(core.models.AbstractModel):
     """
     Модель частозадаваемых вопросов
     """
@@ -23,13 +24,11 @@ class FaqQuestions(django.db.models.Model):
             "Введите ответ на частозадаваемый вопрос (макс. 350 символов)",
         ),
     )
-    created_on = django.db.models.DateField(
-        translation.gettext_lazy("создано"),
-        auto_now_add=True,
-        editable=False,
-    )
 
     class Meta:
         ordering = ("question",)
         verbose_name = translation.gettext_lazy("частозадаваемый вопрос")
         verbose_name_plural = translation.gettext_lazy("частозадаваемые вопросы")
+
+    def __str__(self):
+        return self.question

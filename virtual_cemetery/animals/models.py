@@ -9,6 +9,7 @@ import django.utils.translation as translation
 import sorl.thumbnail
 
 import animals.managers
+import core.models
 
 
 def item_directory_path(instance, filename):
@@ -18,7 +19,7 @@ def item_directory_path(instance, filename):
     return pathlib.Path("animals") / animal_id / filename
 
 
-class Animal(django.db.models.Model):
+class Animal(core.models.AbstractModel):
     objects = animals.managers.AnimalManager()
 
     user = django.db.models.ForeignKey(
@@ -50,11 +51,6 @@ class Animal(django.db.models.Model):
         blank=True,
         null=True,
     )
-    created_on = django.db.models.DateField(
-        translation.gettext_lazy("создано"),
-        auto_now_add=True,
-        editable=False,
-    )
     main_image = sorl.thumbnail.ImageField(
         translation.gettext_lazy("Изображение питомца"),
         help_text=translation.gettext_lazy("Загрузите изображение вашего питомца"),
@@ -65,6 +61,9 @@ class Animal(django.db.models.Model):
         ordering = ("name",)
         verbose_name = translation.gettext_lazy("питомец")
         verbose_name_plural = translation.gettext_lazy("питомцы")
+
+    def __str__(self):
+        return self.name
 
     def get_image_200x200(self):
         return sorl.thumbnail.get_thumbnail(
@@ -95,21 +94,7 @@ class Animal(django.db.models.Model):
     image_tmb.field_name = "image_tmb"
 
 
-class AnimalImages(django.db.models.Model):
-    animal = django.db.models.ForeignKey(
-        Animal,
-        on_delete=django.db.models.CASCADE,
-        related_name="animal_images",
-    )
-    files = django.db.models.ImageField(
-        translation.gettext_lazy("дополнительные изображения"),
-        null=True,
-        blank=True,
-        upload_to=item_directory_path,
-    )
-
-
-class AnimalComments(django.db.models.Model):
+class AnimalComments(core.models.AbstractModel):
     animal = django.db.models.ForeignKey(
         Animal,
         on_delete=django.db.models.CASCADE,
@@ -124,3 +109,8 @@ class AnimalComments(django.db.models.Model):
         max_length=200,
         help_text=translation.gettext_lazy("Введите комментарий"),
     )
+
+    class Meta:
+        ordering = ("user",)
+        verbose_name = translation.gettext_lazy("комментарий")
+        verbose_name_plural = translation.gettext_lazy("комментарии")

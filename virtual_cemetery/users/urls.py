@@ -3,6 +3,7 @@ import django.forms
 import django.urls
 
 
+import users.forms
 import users.views
 
 app_name = "users"
@@ -61,7 +62,7 @@ urlpatterns = [
     ),
     django.urls.path(
         "password-change/",
-        auth_views.PasswordChangeView.as_view(
+        users.views.CustomPasswordChangeView.as_view(
             template_name="users/change_password/password_change.html",
             success_url=django.urls.reverse_lazy(
                 "users:password-change-done",
@@ -86,4 +87,6 @@ urlpatterns = [
         users.views.resend_activation_email,
         name="resend_activation_email",
     ),
+    django.urls.path("user-profile/<pk>/", users.views.profile_user_view, name="profile-user"),
+    django.urls.path("donate/", users.views.donate_view, name="donate"),
 ]

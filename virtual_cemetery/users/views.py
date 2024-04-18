@@ -27,6 +27,15 @@ class CustomPasswordResetView(django.contrib.auth.views.PasswordResetView):
     form_class = users.forms.CustomPasswordResetForm
 
 
+class CustomPasswordChangeView(django.contrib.auth.views.PasswordChangeView):
+    form_class = users.forms.CustomPasswordChangeForm
+
+
+def donate_view(request):
+    template = "users/donate.html"
+    return django.shortcuts.render(request, template)
+
+
 @django.contrib.auth.decorators.login_required(login_url="users:login")
 def profile_user(request):
     user = request.user
@@ -42,6 +51,23 @@ def profile_user(request):
     }
 
     return django.shortcuts.render(request, template, context)
+
+
+@django.contrib.auth.decorators.login_required(login_url="users:login")
+def profile_user_view(request, pk):
+    profile = django.shortcuts.get_object_or_404(
+        users.models.Profile.objects.select_related("user"),
+        user_id=pk,
+    )
+    user = profile.user
+    posts = animals.models.Animal.objects.get_animal_current_user(user)
+
+    context = {
+        "profile": profile,
+        "posts": posts,
+    }
+
+    return django.shortcuts.render(request, "users/profile/profile_user_view.html", context)
 
 
 @django.contrib.auth.decorators.login_required(login_url="users:login")

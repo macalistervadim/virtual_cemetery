@@ -38,7 +38,7 @@ class FeedbackFormFiles(
     Дополнительные файлы для формы обратной связи
     """
 
-    files = MultipleFileField()
+    files = MultipleFileField(required=False)
 
     class Meta:
         model = feedback.models.FeedbackFiles

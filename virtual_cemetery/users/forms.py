@@ -1,5 +1,4 @@
-import django.contrib.auth.forms
-import django.contrib.auth.models
+import django.contrib.auth
 import django.forms
 import django.utils.translation as translation
 
@@ -14,7 +13,11 @@ class BootstrapFormMixin:
             fieldn.field.widget.attrs["class"] = "form-control"
 
 
-class CustomPasswordResetForm(django.contrib.auth.forms.PasswordResetForm):
+class CustomPasswordChangeForm(BootstrapFormMixin, django.contrib.auth.forms.PasswordChangeForm):
+    pass
+
+
+class CustomPasswordResetForm(BootstrapFormMixin, django.contrib.auth.forms.PasswordResetForm):
     """
     Проверка на существование пользователя с указанной почтой в форме
     """

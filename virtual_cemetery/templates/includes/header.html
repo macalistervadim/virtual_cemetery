@@ -8,12 +8,9 @@
       <div class="d-flex flex-wrap align-items-center justify-content-between" style="font-weight: bold;">
         {% with request.resolver_match.view_name as view_name %}
         <div class="nav-link-block"> 
-          
           <a class="navbar-brand mr-1" href="{% url 'homepage:home' %}" style="margin-right:30px;">
             <img src="{% static 'img/cloudpets-header-logo1.png' %}" alt="Logo" width="50" height="50">
           </a>
-          
-
               {% if view_name == 'homepage:home' %}
                   <span class="nav-link px-2 text-white underline disabled nav-box ">{% trans 'Главная' %}</span>
                 {% else %}
@@ -46,35 +43,28 @@
                 {% endif %}
 
                 {% endif %}
+                <button type="button" class="btn btn-outline-light" onclick="location.href='{% url "users:donate" %}';">Пожертвование</button>
           </div>
-
           <div class="nav-link-block">
             {% if user.is_authenticated %}
               {% if user.is_superuser %}
-              
                 <a class="nav-link px-2 text-white nav-box {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">{% trans 'Админ-панель' %}</a>
-              
               {% endif %}
-  
               {% if view_name == 'animals:add-animal' %}
                   <button class="btn btn-outline-secondary disabled" type="button">{% trans 'Создать пост' %}</button>
               {% else %}
                   <a class="btn btn-outline-primary" href="{% url 'animals:add-animal' %}">{% trans 'Создать пост' %}</a>
               {% endif %}
-          
                 <form action="{% url 'users:logout' %}" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-outline-light">Выйти</button>
                 </form>
-     
               {% else %}
                 <button type="button" class="btn btn-outline-light" onclick="location.href='{% url "users:login" %}';">Войти</button>
                 <button type="button" class="btn btn-outline-info" onclick="location.href='{% url "users:signup" %}';">Регистрация</button>
               {% endif %}
           </div>
-
         {% endwith %}
       </div>
     </div>
   </header>
-

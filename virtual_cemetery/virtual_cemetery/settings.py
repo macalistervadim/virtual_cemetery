@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "about.apps.AboutConfig",
     "animals.apps.AnimalsConfig",
+    "event.apps.EventConfig",
     "faq.apps.FaqConfig",
     "feedback.apps.FeedbackConfig",
     "homepage.apps.HomepageConfig",
