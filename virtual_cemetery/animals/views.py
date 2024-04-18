@@ -61,6 +61,30 @@ def animal_detail(request, pk):
     return django.shortcuts.render(request, template, context)
 
 
+def delete_comment(request, pk):
+    comment = django.shortcuts.get_object_or_404(animals.models.AnimalComments, pk=pk)
+    if comment.user == request.user:
+        comment.delete()
+        django.contrib.messages.success(
+            request,
+            "Комментарий успешно удален",
+        )
+
+    return django.shortcuts.redirect("animals:animal-detail", pk=comment.animal.pk)
+
+
+def delete_animal(request, pk):
+    animal = django.shortcuts.get_object_or_404(animals.models.Animal, pk=pk)
+    if animal.user == request.user:
+        animal.delete()
+        django.contrib.messages.success(
+            request,
+            "Пост успешно удален.",
+        )
+
+    return django.shortcuts.redirect("homepage:home")
+
+
 @django.contrib.auth.decorators.login_required(login_url="users:login")
 def add_new_animal(request):
     template = "animals/add_new_animal.html"

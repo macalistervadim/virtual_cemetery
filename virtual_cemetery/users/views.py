@@ -61,7 +61,6 @@ def profile_user_view(request, pk):
     )
     user = profile.user
     posts = animals.models.Animal.objects.get_animal_current_user(user)
-
     context = {
         "profile": profile,
         "posts": posts,
@@ -126,6 +125,14 @@ class SignUpView(django.views.View):
                     kwargs={"pk": user.id},
                 ),
             )
+            django.contrib.messages.warning(
+                request,
+                translation.gettext_lazy(
+                    "Аккаунт зарегистрирован."
+                    " Необходимо пройти активацию. Письмо с активацией выслано на указанную при регистрации почту."
+                    " Ссылка действительна 12ч.",
+                ),
+            )
             django.core.mail.send_mail(
                 django.template.loader.render_to_string(
                     "users/signup/sent_mail/activate_subject.html",
@@ -153,10 +160,16 @@ def activate(request, pk):
 
     user.is_active = True
     user.save()
+    django.contrib.messages.success(
+        request,
+        translation.gettext_lazy(
+            "Аккаунт успешно активирован.",
+        ),
+    )
     return django.shortcuts.render(request, "users/signup/activate_true.html")
 
 
-def reactivate(requset, pk):
+def reactivate(request, pk):
     """
     Разблокировка аккаунта пользователя (повторная активация)
     """
@@ -165,6 +178,12 @@ def reactivate(requset, pk):
         user.is_active = True
         user.save()
 
+    django.contrib.messages.success(
+        request,
+        translation.gettext_lazy(
+            "Аккаунт успешно разблокирован. Выполните повторный вход.",
+        ),
+    )
     return django.shortcuts.redirect(django.urls.reverse("homepage:home"))
 
 

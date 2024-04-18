@@ -26,8 +26,10 @@
                         {% else %}
                         {{ profile.user.email }}
                         {% endif %}
-                        {% if profile.user.is_superuser %}
-                        <span class="badge badge-danger ml-2 p-1"><span class="text-danger">Администратор</span></span>
+                        {% if user.is_superuser %}
+                            <span class="badge badge-danger ml-2" style="border-radius: 5px;">
+                                <span style="background-color: #1E90FF; color: white; padding: 2px 4px; border-radius: 5px; font-size: 18px;">Администратор</span>
+                            </span>
                         {% endif %}
                     </h2>
                 </div>
@@ -54,7 +56,7 @@
                                 <h5 class="card-title">{{ post.name }}</h5>
                             </div>
                             <div class="card-footer">
-                                <a href="{% url 'animals:animal-detail' post.pk %}" class="btn btn-warning stretched-link">Подробнее</a>
+                                <a href="{% url 'animals:animal-detail' post.pk %}" class="btn btn-primary stretched-link">Подробнее</a>
                             </div>
                         </div>
                     </div>

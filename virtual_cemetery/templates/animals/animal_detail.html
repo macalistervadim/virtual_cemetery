@@ -24,7 +24,11 @@
         <img src="{{ animal.get_image_500x500.url }}" class="card-img-top" alt="{{ animal.name }}">
         {% endif %}
         {% if animal.user == request.user %}
-        <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary btn-sm mt-3 ml-3 position-absolute">Редактировать</a>
+            <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary btn-sm mt-3 ml-3">Редактировать</a>
+            <form action="{% url 'animals:delete-animal' animal.pk %}" method="post" class="d-inline" id="deleteAnimalForm">
+                {% csrf_token %}
+                <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletePost()">Удалить</button>
+            </form>
         {% endif %}
         <div class="card-body">
           <p class="card-text"><strong>Автор:</strong> <a href="{% url 'users:profile-user' animal.user.pk %}">{{ animal.user.first_name }}</a></p>
@@ -47,31 +51,51 @@
   </div>
   <div class="row justify-content-center mt-4">
     <div class="col-md-6">
-      <div class="card border-0 shadow-lg">
-        <div class="card-body">
-          <h2 class="mb-4">Комментарии:</h2>
-          {% if not request.user == animal.user %}
-          <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-warning btn-block mt-4">Отправить</button>
-          </form>
-          {% endif %}
-          <ul class="list-unstyled">
-            {% for comment in animal.comments.all %}
-            <li class="media mb-4">
-              <div class="media-body">
-                <h5 class="mt-0">{{ comment.user.first_name }}</h5>
-                <p>{{ comment.comment }}</p>
-              </div>
-            </li>
-            {% empty %}
-            <p>Пока никто не прокомментировал данный пост.</p>
-            {% endfor %}
-          </ul>
+        <div class="card border-0 shadow-lg">
+          <div class="card-body">
+            <h2 class="mb-4">Комментарии:</h2>
+            {% if not request.user == animal.user %}
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-warning btn-block mt-4">Отправить</button>
+            </form>
+            {% endif %}
+                <ul class="list-unstyled">
+                    {% for comment in animal.comments.all %}
+                        <li class="media mb-4">
+                            <div class="media-body">
+                                <h5 class="mt-0"> <a href="{% url 'users:profile-user' comment.user.pk %}">{{ comment.user.first_name }} </a></h5>
+                                <p>{{ comment.comment }}</p>
+                                {% if request.user == comment.user %}
+                                    <form action="{% url 'animals:delete-comment' comment.pk %}" method="post" class="d-inline" id="deleteForm-{{ comment.pk }}">
+                                        {% csrf_token %}
+                                        <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDelete('{{ comment.pk }}')">Удалить</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% empty %}
+                        <p>Пока никто не прокомментировал данный пост.</p>
+                    {% endfor %}
+                </ul>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+    function confirmDelete(commentId) {
+        if (confirm("Вы уверены, что хотите удалить этот комментарий?")) {
+            document.getElementById("deleteForm-" + commentId).submit();
+        }
+    }
+    function confirmDeletePost() {
+        if (confirm("Вы уверены, что хотите удалить этот пост?")) {
+            document.getElementById("deleteAnimalForm").submit();
+        }
+    }
+</script>
 {% endblock %}
