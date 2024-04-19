@@ -4,14 +4,23 @@
 
 {% block content %}
 {% include "includes/messages.html" %}
-<div class="container-xl mt-4">
-  <h1>Регистрация</h1>
-  <form method="post" class="container">
-      {% csrf_token %}
-      <div class="list-group">
-          {% include "includes/form.html" %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card border-0 shadow-lg">
+      <div class="card-body">
+        <div class="container-xl mt-4">
+          <h1>Регистрация</h1>
+          <form method="post" class="container">
+              {% csrf_token %}
+              <div class="list-group">
+                  {% include "includes/form.html" %}
+              </div>
+              <button type="submit" class="btn btn-primary mt-3" value="uwu">Зарегистрироваться</button>
+          </form>
+        </div>
+
       </div>
-      <button type="submit" class="btn btn-primary mt-3" value="uwu">Зарегистрироваться</button>
-  </form>
+    </div>
+  </div>
 </div>
 {% endblock content %}
