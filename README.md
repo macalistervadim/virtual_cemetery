@@ -124,7 +124,7 @@ ru: Russian
    ```
    Linux:
    ```
-   python3 manage.py dumpdata dumpdata animals feedback homepage faq --indent 2 -o fixtures/data.json 
+   python3 manage.py dumpdata dumpdata animals feedback event homepage faq --indent 2 -o fixtures/data.json 
    ```
    
 2. Загрузите данные фикстуры в вашу базу данных, используя команду управления `loaddata`:

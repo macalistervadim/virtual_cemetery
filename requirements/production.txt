@@ -1,5 +1,6 @@
 Django==5.0.3
 django_cleanup==8.1.0
+django-admin-interface==0.28.6
 pillow==10.3.0
 psycopg2==2.9.9
 python-dotenv==1.0.1

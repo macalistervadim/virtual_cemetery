@@ -16,6 +16,8 @@ DEBUG = os.getenv("DJANGO_DEBUG", default="False") == "True"
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", default="*").split(",")
 
 INSTALLED_APPS = [
+    "admin_interface",
+    "colorfield",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -140,3 +142,9 @@ MAX_AUTH_ATTEMPTS = int(os.getenv("MAX_AUTH_ATTEMPTS", 4))
 AUTHENTICATION_BACKENDS = [
     "users.backends.AuthBackend",
 ]
+
+ADMIN_INTERFACE_SETTINGS = {
+    "EXCLUDE_APPS": ["auth", "admin", "contenttypes", "sessions", "sites"],
+    "LIST_FILTER_FIELD": "django_admin_interface.fields.DefaultListFilterField",
+    "LIST_FILTER_DATE": "django_admin_interface.fields.DefaultListFilterDate",
+}
