@@ -6,6 +6,7 @@ import django.core.validators
 import django.db
 import django.forms
 import django.utils.translation as translation
+import sorl.thumbnail
 
 import core.models
 import event.managers
@@ -58,7 +59,7 @@ class Event(core.models.AbstractModel):
     winners = django.db.models.ManyToManyField(
         django.contrib.auth.models.User,
         blank=True,
-        related_name="winners_event"
+        related_name="winners_event",
     )
     prize = django.db.models.CharField(
         translation.gettext_lazy("приз"),
@@ -68,7 +69,7 @@ class Event(core.models.AbstractModel):
     close_date = django.db.models.DateField(
         translation.gettext_lazy("дата окончания"),
     )
-    
+
     class Meta:
         ordering = ("subject",)
         verbose_name = translation.gettext_lazy("конкурс")
@@ -118,7 +119,9 @@ class WorkUser(core.models.AbstractModel):
     body = django.db.models.TextField(
         translation.gettext_lazy("краткая предыстория"),
         max_length=500,
-        help_text=translation.gettext_lazy("Укажите краткую предысторию по созданию работы (макс. 500 симв.)"),
+        help_text=translation.gettext_lazy(
+            "Укажите краткую предысторию по созданию работы (макс. 500 симв.)",
+        ),
     )
     files = django.db.models.FileField(
         translation.gettext_lazy("работа"),
@@ -133,6 +136,34 @@ class WorkUser(core.models.AbstractModel):
 
     def __str__(self):
         return self.subject
+
+    def get_files_200x200(self):
+        return sorl.thumbnail.get_thumbnail(
+            self.files,
+            "200x200",
+            crop="center",
+            quality=51,
+        )
+
+    def get_files_500x500(self):
+        return sorl.thumbnail.get_thumbnail(
+            self.files,
+            "500x500",
+            crop="center",
+            quality=100,
+        )
+
+    def image_tmb(self):
+        if self.files:
+            return django.utils.html.mark_safe(
+                f"<img src='{self.get_image_200x200().url}' width='50'>",
+            )
+
+        return translation.gettext_lazy("Нет загруженной работы")
+
+    image_tmb.short_description = translation.gettext_lazy("превью")
+    image_tmb.allow_tags = True
+    image_tmb.field_name = "image_tmb"
 
 
 class VoteEvent(core.models.AbstractModel):

@@ -120,7 +120,7 @@ ru: Russian
 
    Windows:
    ```
-   python -Xutf8 manage.py dumpdata animals feedback homepage faq --indent 2 -o fixtures/data.json
+   python -Xutf8 manage.py dumpdata animals feedback event homepage faq --indent 2 -o fixtures/data.json
    ```
    Linux:
    ```

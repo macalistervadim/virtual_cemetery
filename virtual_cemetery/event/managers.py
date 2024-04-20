@@ -11,6 +11,8 @@ class EventManager(django.db.models.Manager):
             .order_by(
                 "-" + event.models.Event.created_on.field.name,
             )
+            .prefetch_related("userevent_set")
+            .annotate(participant_count=django.db.models.Count("userevent"))
             .only(
                 event.models.Event.theme.field.name,
                 event.models.Event.subject.field.name,

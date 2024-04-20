@@ -9,11 +9,13 @@
     <div class="row">
         {% for event in events %}
         <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card h-100 shadow">
                 <div class="card-body">
-                    <h5 class="card-title">{{ event.subject }}</h5>
+                    <h5 class="card-title text-primary">{{ event.subject }}</h5>
+                    <p class="card-text"><strong>Тема конкурса:</strong> {{ event.get_theme_display }}</p>
                     <p class="card-text">{{ event.body }}</p>
-                    <p class="card-text"><small class="text-muted">{{ event.close_date }}</small></p>
+                    <p class="card-text"><strong>Участников:</strong> {{ event.participant_count }}</p>
+                    <p class="card-text"><small class="text-muted"><strong>Дата окончания:</strong> {{ event.close_date }}</small></p>
                 </div>
             </div>
         </div>
