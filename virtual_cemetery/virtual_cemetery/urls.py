@@ -8,6 +8,7 @@ urlpatterns = [
     django.urls.path("about/", django.urls.include("about.urls")),
     django.urls.path("animals/", django.urls.include("animals.urls")),
     django.urls.path("users/", django.urls.include("users.urls")),
+    django.urls.path("event/", django.urls.include("event.urls")),
     django.urls.path("faq/", django.urls.include("faq.urls")),
     django.urls.path("feedback/", django.urls.include("feedback.urls")),
     django.urls.path(
