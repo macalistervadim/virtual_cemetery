@@ -21,3 +21,18 @@ class EventManager(django.db.models.Manager):
             )
         )
         return queryset
+
+    def get_current_event(self, pk):
+        queryset = self.get_queryset().filter(pk=pk).select_related("user")
+        return queryset
+
+
+class UserWorksManager(django.db.models.Manager):
+    def get_current_event_works(self, pk):
+        queryset = (
+            self.get_queryset()
+            .filter(event_id=pk)
+            .select_related("user")
+            .values("user__username", "subject", "body")
+        )
+        return queryset

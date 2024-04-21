@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}cloudpets - {{ event.subject }}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-7">
+            <div class="card border-0 shadow-lg p-4" style="background-color: #ffffff;">
+                <p class="card-text text-center mb-0" style="font-size: 16px; color: #4e73df; font-size: 14px;">
+                    <span class="status-badge {% if event.status == 1 %}bg-success{% else %}bg-danger{% endif %} text-white p-2 rounded">
+                        {{ event.get_status_display }}
+                    </span>
+                </p>
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4" style="font-size: 24px; font-weight: bold;">{{ event.subject }}</h2>
+                </div>
+                <div class="text-center mb-4">
+                    <p class="card-text text-muted" style="font-size: 16px;"><strong>Автор конкурса:</strong> <a href="{% url 'users:profile-user' event.user.pk %}" style="color: #6c757d; text-decoration: none;">{{ event.user.first_name }}</a></p>
+                    <hr style="border-top: 2px solid #e3e6f0;">
+                </div>
+                <div class="mb-4">
+                    <p class="text-center card-text" style="font-size: 16px;">{{ event.body }}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="card-text" style="font-size: 16px;"><strong>Дедлайн:</strong> {{ event.close_date }}</p>
+                    <p class="card-text" style="font-size: 16px;"><strong>Приз:</strong> {{ event.prize }}</p>
+                </div>
+                <hr style="border-top: 2px solid #e3e6f0;">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div class="card-text text-uppercase font-weight-bold mb-2" style="color: #008000; font-size: 24px; font-weight: bold;">ПОБЕДИТЕЛИ:</div>
+                    <div class="d-flex flex-column align-items-center">
+                        {% for winner in event.winners.all %}
+                            <div class="mt-2">
+                                <a href="{% url 'users:profile-user' winner.pk %}" class="btn btn-sm btn-warning" style="text-decoration: none; text-transform: uppercase;">{{ winner.first_name }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  {% if works %}
+  <div class="container-fluid py-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-7">
+            <div class="card border-0 shadow-lg p-4" style="background-color: #ffffff;">
+                <h2 class="card-title text-center mb-4" style="color: #4e73df; font-size: 24px; font-weight: bold;">Работы участников</h2>
+                <div class="row">
+                    {% for work in works %}
+                    <div class="col-md-6 mb-4"> <!-- Занимает половину ширины блока -->
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="font-size: 20px; font-weight: bold;">{{ work.subject }}</h5>
+                                <p class="card-text text-muted text-center" style="font-size: 16px;"><strong>Автор:</strong> <a href="{% url 'users:profile-user' event.user.pk %}" style="color: #6c757d; text-decoration: none;">{{ work.user__username }}</a></p>
+                                <p class="card-text text-center" style="font-size: 16px; font-style: italic;">О работе:</p>
+                                <p class="card-text text-muted text-center" style="font-size: 16px;">{{ work.body }}</p> <!-- Текст описания работы -->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

@@ -107,8 +107,14 @@ class WorkUser(core.models.AbstractModel):
     Работа участника конкурса
     """
 
+    objects = event.managers.UserWorksManager()
+
     user = django.db.models.ForeignKey(
-        UserEvent,
+        django.contrib.auth.models.User,
+        on_delete=django.db.models.CASCADE,
+    )
+    event = django.db.models.ForeignKey(
+        Event,
         on_delete=django.db.models.CASCADE,
     )
     subject = django.db.models.CharField(
@@ -133,6 +139,7 @@ class WorkUser(core.models.AbstractModel):
         ordering = ("subject",)
         verbose_name = translation.gettext_lazy("работа участника конкурса")
         verbose_name_plural = translation.gettext_lazy("работы участников конкурсов")
+        unique_together = ("user", "event")
 
     def __str__(self):
         return self.subject

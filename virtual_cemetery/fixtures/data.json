@@ -3,67 +3,52 @@
   "model": "animals.animal",
   "pk": 1,
   "fields": {
-    "created_on": "2024-04-20T14:23:18.526Z",
-    "updated_on": "2024-04-20T14:23:18.526Z",
+    "created_on": "2024-04-21T13:45:41.176Z",
+    "updated_on": "2024-04-21T13:45:41.176Z",
     "user": 1,
-    "name": "dfgdfgdf",
-    "biography": "fdggdfgdf",
-    "date_of_birth": null,
-    "date_of_death": null,
-    "main_image": "animals/83ceec95-d489-409e-8716-c466968379fd/83ceec95-d489-409e-8716-c466968379fd.jpg"
+    "name": "Моя собака",
+    "biography": "СобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабаб",
+    "date_of_birth": "2222-02-21",
+    "date_of_death": "0123-12-12",
+    "main_image": "animals/f7995322-6263-4865-9624-7e0766c12764/f7995322-6263-4865-9624-7e0766c12764.jpg"
   }
 },
 {
   "model": "animals.animalcomments",
   "pk": 1,
   "fields": {
-    "created_on": "2024-04-20T14:57:23.400Z",
-    "updated_on": "2024-04-20T14:57:23.400Z",
+    "created_on": "2024-04-21T14:04:54.432Z",
+    "updated_on": "2024-04-21T14:04:54.432Z",
     "animal": 1,
     "user": 2,
-    "comment": "sdfsdf"
+    "comment": "dsffsdsdf"
   }
 },
 {
   "model": "event.event",
   "pk": 1,
   "fields": {
-    "created_on": "2024-04-20T14:11:51.080Z",
-    "updated_on": "2024-04-20T14:46:37.329Z",
+    "created_on": "2024-04-21T13:11:59.584Z",
+    "updated_on": "2024-04-21T14:14:07.362Z",
     "user": 1,
     "theme": 1,
-    "status": 1,
-    "subject": "Конкурс такой то",
-    "body": "конкурс по лучшей фотографии",
-    "prize": "конкурс по лучшей фотографии",
-    "close_date": "2024-04-22",
+    "status": 2,
+    "subject": "Лучшая собака",
+    "body": "Ну тут крч лучшую собаку представляете и все хлопают ну типа лол ну типа да",
+    "prize": "Почтение администраторов",
+    "close_date": "2024-04-28",
     "winners": [
-      1
+      1,
+      2
     ]
-  }
-},
-{
-  "model": "event.event",
-  "pk": 4,
-  "fields": {
-    "created_on": "2024-04-20T15:00:47.194Z",
-    "updated_on": "2024-04-20T15:00:47.194Z",
-    "user": 2,
-    "theme": 2,
-    "status": 1,
-    "subject": "sdffsdfsd",
-    "body": "sdfsdfdfs",
-    "prize": "sfdfsdsfd",
-    "close_date": "2024-04-20",
-    "winners": []
   }
 },
 {
   "model": "event.userevent",
   "pk": 1,
   "fields": {
-    "created_on": "2024-04-20T14:12:01.452Z",
-    "updated_on": "2024-04-20T14:12:01.452Z",
+    "created_on": "2024-04-21T13:12:22.750Z",
+    "updated_on": "2024-04-21T13:12:22.750Z",
     "user": 1,
     "event": 1
   }
@@ -72,33 +57,23 @@
   "model": "event.userevent",
   "pk": 2,
   "fields": {
-    "created_on": "2024-04-20T14:57:35.096Z",
-    "updated_on": "2024-04-20T14:57:35.096Z",
+    "created_on": "2024-04-21T14:05:14.118Z",
+    "updated_on": "2024-04-21T14:05:14.118Z",
     "user": 2,
     "event": 1
   }
 },
 {
   "model": "event.workuser",
-  "pk": 1,
+  "pk": 3,
   "fields": {
-    "created_on": "2024-04-20T14:12:40.789Z",
-    "updated_on": "2024-04-20T14:12:40.789Z",
+    "created_on": "2024-04-21T14:13:44.091Z",
+    "updated_on": "2024-04-21T14:13:44.091Z",
     "user": 1,
-    "subject": "asdasdas",
-    "body": "adsdasasddsa",
-    "files": "event/None/7014cf72-6b9e-488d-9bb3-edb8289ad16f.jpg"
-  }
-},
-{
-  "model": "event.voteevent",
-  "pk": 1,
-  "fields": {
-    "created_on": "2024-04-20T14:13:04.878Z",
-    "updated_on": "2024-04-20T14:13:04.878Z",
-    "user": 1,
-    "work": 1,
-    "score": 1
+    "event": 1,
+    "subject": "Мой любимый кот",
+    "body": "fdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdf",
+    "files": "event/None/02c3f7fb-33d3-4fbe-992b-5071762e104d.jpg"
   }
 }
 ]

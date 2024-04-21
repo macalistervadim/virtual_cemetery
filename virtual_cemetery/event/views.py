@@ -15,3 +15,16 @@ def all_events_view(request):
     }
 
     return django.shortcuts.render(request, template, context)
+
+
+def get_current_event_view(request, pk):
+    template = "event/current_event.html"
+    curr_event = event.models.Event.objects.get_current_event(pk=pk).first()
+    curr_event_works = event.models.WorkUser.objects.get_current_event_works(pk=pk)
+
+    context = {
+        "event": curr_event,
+        "works": curr_event_works,
+    }
+
+    return django.shortcuts.render(request, template, context)
