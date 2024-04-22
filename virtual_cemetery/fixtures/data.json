@@ -1,96 +1,92 @@
 [
 {
-  "model": "animals.animal",
-  "pk": 1,
-  "fields": {
-    "created_on": "2024-04-21T13:45:41.176Z",
-    "updated_on": "2024-04-21T13:45:41.176Z",
-    "user": 1,
-    "name": "Моя собака",
-    "biography": "СобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабабСобакабабабабабабабаббабабабабаббабабабабабабаб",
-    "date_of_birth": "2222-02-21",
-    "date_of_death": "0123-12-12",
-    "main_image": "animals/f7995322-6263-4865-9624-7e0766c12764/f7995322-6263-4865-9624-7e0766c12764.jpg"
-  }
-},
-{
-  "model": "animals.animalcomments",
-  "pk": 1,
-  "fields": {
-    "created_on": "2024-04-21T14:04:54.432Z",
-    "updated_on": "2024-04-21T14:04:54.432Z",
-    "animal": 1,
-    "user": 2,
-    "comment": "dsffsdsdf"
-  }
-},
-{
   "model": "event.event",
   "pk": 1,
   "fields": {
-    "created_on": "2024-04-21T13:11:59.584Z",
-    "updated_on": "2024-04-22T10:55:17.584Z",
+    "created_on": "2024-04-22T15:59:27.622Z",
+    "updated_on": "2024-04-22T15:59:27.622Z",
     "user": 1,
     "theme": 1,
-    "status": 2,
-    "subject": "Лучшая собака",
-    "body": "Ну тут крч лучшую собаку представляете и все хлопают ну типа лол ну типа даНу тут крч лучшую собаку представляете и все хлопают ну типа лол ну типа да",
-    "prize": "Почтение администраторов",
-    "close_date": "2024-04-28",
-    "winners": [
-      1,
-      2
-    ]
+    "status": 1,
+    "subject": "sdfsfdsfdfsd",
+    "body": "sdfsdfsdfsdf",
+    "prize": "sdfdfssfd",
+    "close_date": "2024-04-22",
+    "winners": []
   }
 },
 {
   "model": "event.event",
   "pk": 2,
   "fields": {
-    "created_on": "2024-04-22T10:45:30.320Z",
-    "updated_on": "2024-04-22T10:55:12.331Z",
+    "created_on": "2024-04-22T16:01:23.092Z",
+    "updated_on": "2024-04-22T16:01:23.092Z",
     "user": 2,
-    "theme": 1,
+    "theme": 5,
     "status": 1,
-    "subject": "выавыаыва",
-    "body": "ваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываыва",
-    "prize": "ыавывааыв",
+    "subject": "sdfsfdsdf",
+    "body": "sdfsdfsfdsdffsd",
+    "prize": "dsffsdsfdsdfdsfsdf",
     "close_date": "2024-04-22",
     "winners": []
   }
 },
 {
   "model": "event.workuser",
-  "pk": 9,
+  "pk": 1,
   "fields": {
-    "created_on": "2024-04-22T11:09:09.801Z",
-    "updated_on": "2024-04-22T11:09:09.801Z",
+    "created_on": "2024-04-22T15:59:43.163Z",
+    "updated_on": "2024-04-22T15:59:43.163Z",
+    "user": 1,
+    "event": 1,
+    "subject": "dsfdsfsdf",
+    "body": "dfssfdsdf",
+    "files": "event/f8b0daae-d422-4c5e-8bbb-587e785e0c9d/f8b0daae-d422-4c5e-8bbb-587e785e0c9d.jpg"
+  }
+},
+{
+  "model": "event.workuser",
+  "pk": 3,
+  "fields": {
+    "created_on": "2024-04-22T16:01:44.291Z",
+    "updated_on": "2024-04-22T16:01:44.291Z",
     "user": 1,
     "event": 2,
-    "subject": "asdassad",
-    "body": "asdsadsadasdads",
-    "files": "event/934b2b09-5584-41ce-9494-e32ac9867822/934b2b09-5584-41ce-9494-e32ac9867822.jpg"
+    "subject": "grhddfgfgd",
+    "body": "fdgfdgfgddgf",
+    "files": "event/2b5141b4-932c-4fe6-bc9f-5b7347856433/2b5141b4-932c-4fe6-bc9f-5b7347856433.jpg"
   }
 },
 {
   "model": "event.voteevent",
-  "pk": 5,
+  "pk": 1,
   "fields": {
-    "created_on": "2024-04-22T11:42:50.839Z",
-    "updated_on": "2024-04-22T11:42:50.839Z",
-    "user": 1,
-    "work": 9,
-    "score": 4
-  }
-},
-{
-  "model": "event.voteevent",
-  "pk": 9,
-  "fields": {
-    "created_on": "2024-04-22T11:42:27.203Z",
-    "updated_on": "2024-04-22T11:42:27.203Z",
+    "created_on": "2024-04-22T16:00:49.384Z",
+    "updated_on": "2024-04-22T16:00:49.384Z",
     "user": 2,
-    "work": 9,
+    "work": 1,
+    "score": 5
+  }
+},
+{
+  "model": "event.voteevent",
+  "pk": 2,
+  "fields": {
+    "created_on": "2024-04-22T16:03:05.182Z",
+    "updated_on": "2024-04-22T16:03:05.182Z",
+    "user": 3,
+    "work": 3,
+    "score": 5
+  }
+},
+{
+  "model": "event.voteevent",
+  "pk": 3,
+  "fields": {
+    "created_on": "2024-04-22T16:03:12.726Z",
+    "updated_on": "2024-04-22T16:03:12.726Z",
+    "user": 3,
+    "work": 1,
     "score": 1
   }
 }

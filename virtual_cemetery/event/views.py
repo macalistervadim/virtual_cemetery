@@ -33,6 +33,7 @@ def get_current_event_view(request, pk):
     return django.shortcuts.render(request, template, context)
 
 
+@django.contrib.auth.decorators.login_required(login_url="users:login")
 def registration_event_work(request):
     template = "event/register_event_work.html"
 
@@ -63,6 +64,7 @@ def registration_event_work(request):
     return django.shortcuts.render(request, template, context)
 
 
+@django.contrib.auth.decorators.login_required(login_url="users:login")
 def get_current_work_event(request, pk):
     """
     Просмотр конкретной работы
@@ -80,7 +82,7 @@ def get_current_work_event(request, pk):
             pre_commit.user = request.user
             pre_commit.work = event.models.WorkUser.objects.get(pk=pk)
             pre_commit.created_on = django.utils.timezone.now()
-            if pre_commit.user == request.user:
+            if request.user == get_work.user:
                 django.contrib.messages.error(
                     request,
                     translation.gettext_lazy(

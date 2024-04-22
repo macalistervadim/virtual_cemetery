@@ -163,7 +163,7 @@ class VoteEvent(core.models.AbstractModel):
         EXCELLENT = 4, translation.gettext_lazy("Отлично")
         PERFECT = 5, translation.gettext_lazy("Восхитительно")
 
-    user = django.db.models.OneToOneField(
+    user = django.db.models.ForeignKey(
         django.contrib.auth.models.User,
         on_delete=django.db.models.CASCADE,
     )
