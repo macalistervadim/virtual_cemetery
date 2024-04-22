@@ -24,10 +24,10 @@
         <img src="{{ animal.get_image_500x500.url }}" class="card-img-top" alt="{{ animal.name }}">
         {% endif %}
         {% if animal.user == request.user %}
-            <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary btn-sm mt-3 ml-3">Редактировать</a>
+            <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary btn-sm mt-3 ml-3" style="margin-left:10px;margin-right:10px;margin-bottom:10px;">Редактировать</a>
             <form action="{% url 'animals:delete-animal' animal.pk %}" method="post" class="d-inline" id="deleteAnimalForm">
                 {% csrf_token %}
-                <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletePost()">Удалить</button>
+                <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletePost()" style="margin-left:10px;">Удалить</button>
             </form>
         {% endif %}
         <div class="card-body">

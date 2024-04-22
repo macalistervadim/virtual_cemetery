@@ -71,6 +71,11 @@ class AuthForm(
             django.contrib.auth.models.User.password.field.name,
         )
 
+        labels = {
+            django.contrib.auth.models.User.username.field.name: "Имя пользователя/Почта",
+            django.contrib.auth.models.User.password.field.name: "Пароль",
+        }
+
 
 class ChangeProfile(
     core.forms.BootstrapFormMixin,

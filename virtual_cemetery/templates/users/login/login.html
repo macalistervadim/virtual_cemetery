@@ -4,11 +4,13 @@
 {% block content %}
 
 <div class="row justify-content-center">
-  <div class="col-md-8">
-    <div class="card border-0 shadow-lg">
+    <div class="card border-0 shadow-sm">
       <div class="card-body">
         <div class="container-xl mt-4">
-          <h1>Авторизация</h1>
+          <div style="display:flex; column-gap:10px; margin-left:10px; margin-bottom:20px;">
+          <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="Logo" width="50" height="50">
+          <h1>Войти</h1>
+          </div>
           {% if form.non_field_errors %}
           <div class="alert alert-danger">
               {% for error in form.non_field_errors %}
@@ -32,13 +34,14 @@
               <div class="list-group">
                   {% include "includes/form.html" %}
               </div>
-              <button type="submit" class="btn btn-primary mt-3" value="uwu">Войти</button>
+              <br>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Войти</button>
           </form>
-          <a href="{% url "users:password-reset" %}" class="btn btn-link btn-sm">"Забыли пароль?"</a>
+          <hr class="featurette-divider">
+          <a href="{% url "users:password-reset" %}" class="btn btn-link btn-sm" style="text-decoration: none;">Забыли пароль?</a>
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 {% endblock content %}

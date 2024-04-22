@@ -5,39 +5,89 @@
 {% block title %}cloudpets - О нас{% endblock title %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-lg">
-                <div class="card-body">
-                    <h3 class="card-title mb-4">Коротко о нас</h3>
-                    <p class="card-text">
-                        Мы - команда энтузиастов, создавшая виртуальное кладбище домашних животных "cloudpets".
-                        Наша миссия - сохранить память о наших любимых питомцах, которые ушли от нас, и создать
-                        уютное место для общения и поддержки тех, кто потерял своего верного друга.
-                    </p>
-                    <p class="card-text">
-                        Наши функции включают в себя:
-                    </p>
-                    <ul class="card-text">
-                        <li>Возможность создания виртуального памятника для вашего питомца.</li>
-                        <li>Обмен воспоминаниями и историями с другими владельцами домашних животных.</li>
-                        <li>Поддержка в трудные моменты и возможность выразить свои чувства в нашем сообществе.</li>
-                    </ul>
-                    <p class="card-text">
-                        Присоединяйтесь к нам сегодня и помогите нам сохранить память о наших пушистых друзьях!
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">cloudpets, создано с любовью.</small>
-                    </p>
-                </div>
-            </div>
-        </div>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">О нас</h1>
+        <p class="lead text-body-secondary"> Мы - команда энтузиастов, создавшая виртуальное кладбище домашних животных "cloudpets".
+            Наша миссия - сохранить память о наших любимых питомцах, которые ушли от нас, и создать
+            уютное место для общения и поддержки тех, кто потерял своего верного друга.</p>
+        <p>
+          <a href={% url "users:donate" %} class="btn btn-outline-dark">Поддержать нас</a>
+          <a href={% url 'feedback:feedback' %} class="btn btn-outline-dark">Связаться с нами</a>
+        </p>
+      </div>
     </div>
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8 text-center">
-            <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="cloudpets" class="img-fluid" style="max-width: 300px;">
+  </section>
+  <hr class="featurette-divider">
+  <section class="py-5 text-center container">
+  <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom:20px;">
+  <h1 class="fw-light">Наша Команда</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+        <img src={% static 'img/manul1.jpg' %} class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="User image">
+      <h2 class="fw-normal">Человек-лид</h2>
+      <p>Тут какая-то крутая инфомация о человеке</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+        <img src={% static 'img/manul1.jpg' %} class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="User image">
+      <h2 class="fw-normal">Никита</h2>
+      <p>Инфы не будет</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+        <img src={% static 'img/manul1.jpg' %} class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="User image">
+      <h2 class="fw-normal">Потерянный человек</h2>
+      <p>Инфомация тоже затерялась</p>
+    </div><!-- /.col-lg-4 -->
+  </div>
+</section>
+<hr class="featurette-divider">
+<section class="py-5 text-center container">
+    <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom:60px;">
+        <h1 class="fw-light">О сайте</h1>
         </div>
+<div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">Виртуальные Памятники </h2>
+      <p class="lead">Возможность создания виртуального памятника для вашего питомца.</p>
     </div>
-</div>
+    <div class="col-md-5">
+        <img src={% static 'img/OIG322.jpg' %} class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" role="img" aria-label="User image">
+
+  </div>
+</section>
+
+<hr class="featurette-divider">
+<section class="py-5 text-center container">
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading fw-normal lh-1">Делитесь воспоминаниями </h2>
+      <p class="lead">Обмен воспоминаниями и историями с другими владельцами домашних животных.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img src={% static 'img/OIG422.jpg' %} class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" role="img" aria-label="User image">
+    </div>
+  </div>
+</section>
+<hr class="featurette-divider">
+<section class="py-5 text-center container">
+<div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">Поддержка со стороны </h2>
+      <p class="lead">Поддержка в трудные моменты и возможность выразить свои чувства в нашем сообществе.</p>
+    </div>
+    <div class="col-md-5">
+        <img src={% static 'img/OIG122.jpeg' %} class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" role="img" aria-label="User image">
+
+  </div>
+</section>
+<hr class="featurette-divider">
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Присоединяйтесь к нам сегодня и помогите нам сохранить память о наших пушистых друзьях!</h1>
+      </div>
+    </div>
+  </section>
 {% endblock content %}

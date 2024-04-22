@@ -4,7 +4,7 @@ headerHeight = document.querySelector(".js-header").clientHeight
 document.onscroll = function (){
     let scroll = window.scrollY;
 
-    if (scroll > headerHeight + 113){
+    if (scroll > headerHeight + 33){
         header.classList.add("fixed");
         document.body.style.paddingTop = headerHeight + "px";
     } else{

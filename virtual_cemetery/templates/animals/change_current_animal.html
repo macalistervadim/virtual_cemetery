@@ -5,10 +5,18 @@
 {% block title %}cloudpets - Редактирование публикации{% endblock title %}
 
 {% block content %}
-    <h3 class="mt-5 mb-4">Отредактируйте вашу запись</h3>
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-warning btn-block mt-4">Сохранить</button>
-  </form>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card border-0 shadow-lg">
+      <div class="card-body">
+        <h3 class="mt-5 mb-4">Отредактируйте вашу запись</h3>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-warning ">Сохранить</button>
+      </form>
+        </div>
+      </div>
+    </div>
+</div>
 {% endblock content %}

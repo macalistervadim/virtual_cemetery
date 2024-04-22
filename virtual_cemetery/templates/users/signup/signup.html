@@ -9,13 +9,16 @@
     <div class="card border-0 shadow-lg">
       <div class="card-body">
         <div class="container-xl mt-4">
-          <h1>Регистрация</h1>
+          <div style="display:flex; column-gap:10px; margin-left:10px; margin-bottom:20px;">
+            <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="Logo" width="50" height="50">
+            <h1>Регистрация</h1>
+            </div>
           <form method="post" class="container">
               {% csrf_token %}
               <div class="list-group">
                   {% include "includes/form.html" %}
               </div>
-              <button type="submit" class="btn btn-primary mt-3" value="uwu">Зарегистрироваться</button>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Зарегистрироваться</button>
           </form>
         </div>
 

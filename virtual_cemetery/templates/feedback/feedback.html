@@ -10,12 +10,17 @@
     <div class="card border-0 shadow-lg">
       <div class="card-body">
           {% include "includes/messages.html" %}
+          <div style="display:flex; column-gap:10px; margin-left:10px; margin-bottom:20px; align-items: center;">
+            <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="Logo" width="50" height="50">
             <h3 class="mt-5 mb-4">Оставьте вашу обратную связь и получите ответ</h3>
+            </div>
+            
             <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{ form.as_p }}
               {{ form_files.as_p }}
-              <button type="submit" class="btn btn-warning btn-block mt-4">Отправить</button>
+              <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-warning ">Отправить</button>
+              
           </form>
         </div>
       </div>
