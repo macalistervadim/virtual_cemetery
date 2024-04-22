@@ -14,8 +14,8 @@ import event.managers
 
 def item_directory_path(instance, filename):
     ext = filename.split(".")[-1]
-    filename = f"{uuid.uuid4()}.{ext}"
-    event_id = str(instance.id)
+    event_id = str(instance.pk) if instance.pk else str(uuid.uuid4())
+    filename = f"{event_id}.{ext}"
     return pathlib.Path("event") / event_id / filename
 
 
@@ -79,29 +79,6 @@ class Event(core.models.AbstractModel):
         return self.subject
 
 
-class UserEvent(core.models.AbstractModel):
-    """
-    Участник конкурса
-    """
-
-    user = django.db.models.OneToOneField(
-        django.contrib.auth.models.User,
-        on_delete=django.db.models.CASCADE,
-    )
-    event = django.db.models.ForeignKey(
-        Event,
-        on_delete=django.db.models.CASCADE,
-    )
-
-    class Meta:
-        ordering = ("event",)
-        verbose_name = translation.gettext_lazy("участник")
-        verbose_name_plural = translation.gettext_lazy("участники")
-
-    def __str__(self):
-        return self.user.username
-
-
 class WorkUser(core.models.AbstractModel):
     """
     Работа участника конкурса
@@ -116,6 +93,7 @@ class WorkUser(core.models.AbstractModel):
     event = django.db.models.ForeignKey(
         Event,
         on_delete=django.db.models.CASCADE,
+        verbose_name=translation.gettext_lazy("Выберите конкурс"),
     )
     subject = django.db.models.CharField(
         translation.gettext_lazy("название работы"),
@@ -182,7 +160,7 @@ class VoteEvent(core.models.AbstractModel):
         TERRIBLY = 1, translation.gettext_lazy("Ужасно")
         NOTBAD = 2, translation.gettext_lazy("Неплохо")
         NICE = 3, translation.gettext_lazy("Хорошо")
-        EXCELLENT = 4, translation.gettext_lazy("Информационный")
+        EXCELLENT = 4, translation.gettext_lazy("Отлично")
         PERFECT = 5, translation.gettext_lazy("Восхитительно")
 
     user = django.db.models.OneToOneField(

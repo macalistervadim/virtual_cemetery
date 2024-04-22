@@ -2,14 +2,8 @@ import django.contrib.auth.forms
 import django.core
 import django.forms
 
+import core.forms
 import feedback.models
-
-
-class BootstrapFormMixin:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for fieldn in self.visible_fields():
-            fieldn.field.widget.attrs["class"] = "form-control"
 
 
 class MultipleFileInput(django.forms.ClearableFileInput):
@@ -31,7 +25,7 @@ class MultipleFileField(django.forms.FileField):
 
 
 class FeedbackFormFiles(
-    BootstrapFormMixin,
+    core.forms.BootstrapFormMixin,
     django.forms.ModelForm,
 ):
     """
@@ -46,7 +40,7 @@ class FeedbackFormFiles(
 
 
 class FeedbackForm(
-    BootstrapFormMixin,
+    core.forms.BootstrapFormMixin,
     django.forms.ModelForm,
 ):
     class Meta:

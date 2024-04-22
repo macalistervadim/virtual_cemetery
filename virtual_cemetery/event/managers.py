@@ -11,8 +11,6 @@ class EventManager(django.db.models.Manager):
             .order_by(
                 "-" + event.models.Event.created_on.field.name,
             )
-            .prefetch_related("userevent_set")
-            .annotate(participant_count=django.db.models.Count("userevent"))
             .only(
                 event.models.Event.theme.field.name,
                 event.models.Event.subject.field.name,
@@ -33,6 +31,10 @@ class UserWorksManager(django.db.models.Manager):
             self.get_queryset()
             .filter(event_id=pk)
             .select_related("user")
-            .values("user__username", "subject", "body")
+            .values("user__username", "subject", "body", "id")
         )
+        return queryset
+
+    def get_current_work(self, pk):
+        queryset = self.get_queryset().filter(pk=pk).select_related("user").first()
         return queryset

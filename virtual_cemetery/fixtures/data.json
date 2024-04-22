@@ -29,12 +29,12 @@
   "pk": 1,
   "fields": {
     "created_on": "2024-04-21T13:11:59.584Z",
-    "updated_on": "2024-04-21T14:14:07.362Z",
+    "updated_on": "2024-04-22T10:55:17.584Z",
     "user": 1,
     "theme": 1,
     "status": 2,
     "subject": "Лучшая собака",
-    "body": "Ну тут крч лучшую собаку представляете и все хлопают ну типа лол ну типа да",
+    "body": "Ну тут крч лучшую собаку представляете и все хлопают ну типа лол ну типа даНу тут крч лучшую собаку представляете и все хлопают ну типа лол ну типа да",
     "prize": "Почтение администраторов",
     "close_date": "2024-04-28",
     "winners": [
@@ -44,36 +44,54 @@
   }
 },
 {
-  "model": "event.userevent",
-  "pk": 1,
-  "fields": {
-    "created_on": "2024-04-21T13:12:22.750Z",
-    "updated_on": "2024-04-21T13:12:22.750Z",
-    "user": 1,
-    "event": 1
-  }
-},
-{
-  "model": "event.userevent",
+  "model": "event.event",
   "pk": 2,
   "fields": {
-    "created_on": "2024-04-21T14:05:14.118Z",
-    "updated_on": "2024-04-21T14:05:14.118Z",
+    "created_on": "2024-04-22T10:45:30.320Z",
+    "updated_on": "2024-04-22T10:55:12.331Z",
     "user": 2,
-    "event": 1
+    "theme": 1,
+    "status": 1,
+    "subject": "выавыаыва",
+    "body": "ваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываываваыываыва",
+    "prize": "ыавывааыв",
+    "close_date": "2024-04-22",
+    "winners": []
   }
 },
 {
   "model": "event.workuser",
-  "pk": 3,
+  "pk": 9,
   "fields": {
-    "created_on": "2024-04-21T14:13:44.091Z",
-    "updated_on": "2024-04-21T14:13:44.091Z",
+    "created_on": "2024-04-22T11:09:09.801Z",
+    "updated_on": "2024-04-22T11:09:09.801Z",
     "user": 1,
-    "event": 1,
-    "subject": "Мой любимый кот",
-    "body": "fdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdffdsfsdfsdsdfsdf",
-    "files": "event/None/02c3f7fb-33d3-4fbe-992b-5071762e104d.jpg"
+    "event": 2,
+    "subject": "asdassad",
+    "body": "asdsadsadasdads",
+    "files": "event/934b2b09-5584-41ce-9494-e32ac9867822/934b2b09-5584-41ce-9494-e32ac9867822.jpg"
+  }
+},
+{
+  "model": "event.voteevent",
+  "pk": 5,
+  "fields": {
+    "created_on": "2024-04-22T11:42:50.839Z",
+    "updated_on": "2024-04-22T11:42:50.839Z",
+    "user": 1,
+    "work": 9,
+    "score": 4
+  }
+},
+{
+  "model": "event.voteevent",
+  "pk": 9,
+  "fields": {
+    "created_on": "2024-04-22T11:42:27.203Z",
+    "updated_on": "2024-04-22T11:42:27.203Z",
+    "user": 2,
+    "work": 9,
+    "score": 1
   }
 }
 ]

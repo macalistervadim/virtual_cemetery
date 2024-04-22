@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}cloudpets - Просмотр работы{% endblock title %}
+
+{% block content %}
+{% include "includes/messages.html" %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg">
+                <img src="{{ work.get_files_500x500.url }}" class="card-img-top" alt="{{ work.subject }}">
+                <div class="card-body text-center">
+                    {% if average_rating %}
+                    <p class="mt-3">Рейтинг работы: {{ average_rating }}</p>
+                    {% endif %}
+                    <p class="card-text"><strong>Автор:</strong> <a href="{% url 'users:profile-user' work.user.pk %}">{{ work.user.first_name }}</a></p>
+                    <h5 class="card-title">{{ work.subject }}</h5>
+                    <p class="card-text">{{ work.body }}</p>
+                    <div class="d-flex justify-content-center">
+                        <p class="card-text"><strong>Дата создания:</strong> {{ work.created_on }}</p>
+                    </div>
+                    {% if not request.user == work.user %}
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Оценить работу</button>
+                    </form>
+                    {% endif %}
+                    <hr>
+                    <a href="{% url 'event:all-events' %}" class="btn btn-primary">Вернуться к конкурсам</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

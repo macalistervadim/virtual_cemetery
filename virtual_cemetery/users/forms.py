@@ -2,22 +2,22 @@ import django.contrib.auth
 import django.forms
 import django.utils.translation as translation
 
+import core.forms
 import users.managers
 import users.models
 
 
-class BootstrapFormMixin:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for fieldn in self.visible_fields():
-            fieldn.field.widget.attrs["class"] = "form-control"
-
-
-class CustomPasswordChangeForm(BootstrapFormMixin, django.contrib.auth.forms.PasswordChangeForm):
+class CustomPasswordChangeForm(
+    core.forms.BootstrapFormMixin,
+    django.contrib.auth.forms.PasswordChangeForm,
+):
     pass
 
 
-class CustomPasswordResetForm(BootstrapFormMixin, django.contrib.auth.forms.PasswordResetForm):
+class CustomPasswordResetForm(
+    core.forms.BootstrapFormMixin,
+    django.contrib.auth.forms.PasswordResetForm,
+):
     """
     Проверка на существование пользователя с указанной почтой в форме
     """
@@ -35,7 +35,7 @@ class CustomPasswordResetForm(BootstrapFormMixin, django.contrib.auth.forms.Pass
 
 
 class CustomUserCreationForm(
-    BootstrapFormMixin,
+    core.forms.BootstrapFormMixin,
     django.contrib.auth.forms.UserCreationForm,
 ):
     class Meta(django.contrib.auth.forms.UserCreationForm.Meta):
@@ -61,7 +61,7 @@ class CustomUserCreationForm(
 
 
 class AuthForm(
-    BootstrapFormMixin,
+    core.forms.BootstrapFormMixin,
     django.contrib.auth.forms.AuthenticationForm,
 ):
     class Meta:
@@ -73,7 +73,7 @@ class AuthForm(
 
 
 class ChangeProfile(
-    BootstrapFormMixin,
+    core.forms.BootstrapFormMixin,
     django.forms.ModelForm,
 ):
     class Meta:
@@ -84,7 +84,7 @@ class ChangeProfile(
 
 
 class UserChangeForm(
-    BootstrapFormMixin,
+    core.forms.BootstrapFormMixin,
     django.contrib.auth.forms.UserChangeForm,
 ):
     password = None
