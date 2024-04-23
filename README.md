@@ -66,46 +66,7 @@ python3 manage.py collectstatic
    copy .env.example .env
    ```
 
-2. Откройте файл `.env` и установите там свои значения:
-    ```plaintext
-    # DJANGO_SECRET_KEY
-    `DJANGO_SECRET_KEY=your_secret_key_here`
-    
-    # DEBUG
-    `DEBUG=True/False`
-
-    # DJANGO_ALLOWED_HOSTS
-    `DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost`
-
-    # DEFAULT_FROM_EMAIL
-    `DEFAULT_FROM_EMAIL=admin@admin.ru`
-
-    # Other environment variables...
-    ```
-
-## Управление языками сайта
-
-1. Создайте файлы с переводами, выполните команды: `django-admin makemessages -l ru` и `django-admin makemessages -l en`
-2. Отредактируйте переводы: Откройте файл `.po` и замените там пустые строки на строки соответствующего перевода
-3. Скомпилируйте готовые переводы: `django-admin compilemessages`
-
-Замените `<language_code>` на желаемый код языка для перевода. Например, для английского языка вы можете использовать `en`, а для испанского - `es`.
-
-Стандартные коды языков
-Вот некоторые стандартные коды языков, которые вы можете использовать:
-```
-en: English
-es: Spanish
-fr: French
-de: German
-ru: Russian
-```
-
-Кроме того, Django предоставляет предопределенные переводы для определенных языков. Вы можете найти список доступных языков в документации Django:
-
-[Django - Доступные языки](http://www.lingoes.net/en/translator/langcode.htm)
-
-При использовании команды `makemessages` Django автоматически создаст файлы перевода для указанного языка, используя предопределенные переводы, если они доступны.
+2. Откройте файл `.env` и установите там свои значения
 
 ## Фикстуры
 
