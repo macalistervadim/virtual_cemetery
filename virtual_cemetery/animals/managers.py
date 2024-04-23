@@ -25,11 +25,11 @@ class AnimalManager(django.db.models.Manager):
             .select_related("user")
             .only(
                 "user__first_name",
-                "name",
-                "main_image",
-                "biography",
-                "date_of_birth",
-                "date_of_death",
+                animals.models.Animal.name.field.name,
+                animals.models.Animal.main_image.field.name,
+                animals.models.Animal.biography.field.name,
+                animals.models.Animal.date_of_birth.field.name,
+                animals.models.Animal.date_of_death.field.name,
             )
         )
 
@@ -38,7 +38,7 @@ class AnimalManager(django.db.models.Manager):
             .select_related("user")
             .only(
                 "user__first_name",
-                "comment",
+                animals.models.AnimalComments.comment.field.name,
             )
         )
 

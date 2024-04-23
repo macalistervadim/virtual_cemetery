@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-{% load i18n %}
 {% load static %}
 
 {% block title %}cloudpets - {{ event.subject }}{% endblock title %}
@@ -59,7 +59,7 @@
                                 <h5 class="card-title text-center" style="font-size: 20px; font-weight: bold;">{{ work.subject }}</h5>
                                 <p class="card-text text-muted text-center" style="font-size: 16px;"><strong>Автор:</strong> <a href="{% url 'users:profile-user' event.user.pk %}" style="color: #6c757d; text-decoration: none;">{{ work.user__username }}</a></p>
                                 <p class="card-text text-center" style="font-size: 16px; font-style: italic;">О работе:</p>
-                                <p class="card-text text-muted text-center" style="font-size: 16px;">{{ work.body }}</p>
+                                <p class="text-center card-text" style="font-size: 16px;">{{ work.body|truncatechars_html:100 }}</p>
                                 <div class="text-center">
                                     <a href="{% url 'event:current-work' pk=work.id %}" class="btn btn-primary">Просмотреть работу</a>
                                 </div>

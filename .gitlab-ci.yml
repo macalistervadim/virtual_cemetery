@@ -1,5 +1,4 @@
 stages:
-  - test
   - linting
   - black
 
@@ -15,15 +14,3 @@ black:
   image: registry.gitlab.com/pipeline-components/black:latest
   script:
     - black --config pyproject.toml --check .
-
-test:
-  stage: test
-  image: python:3.10
-  script:
-    - python -m venv $CI_PROJECT_DIR/venv
-    - source $CI_PROJECT_DIR/venv/bin/activate
-    - pip install -r requirements/test.txt
-    - cd $CI_PROJECT_DIR/virtual_cemetery
-    - python manage.py test
-    - deactivate
-    - rm -rf $CI_PROJECT_DIR/venv

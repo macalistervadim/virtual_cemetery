@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-{% load i18n %}
 {% load static %}
 
 {% block title %}cloudpets - Просмотр работы{% endblock title %}
@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card border-0 shadow-lg">
-                <img src="{{ work.get_files_500x500.url }}" class="card-img-top" alt="{{ work.subject }}">
+                <img src="{{ work.get_image_500x500.url }}" class="card-img-top" alt="{{ work.subject }}">
                 <div class="card-body text-center">
                     {% if average_rating %}
                     <p class="mt-3">Рейтинг работы: {{ average_rating|floatformat:1 }}</p>

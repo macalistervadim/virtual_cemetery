@@ -1,76 +1,72 @@
 <!DOCTYPE html>
-{% load i18n %}
 {% load static %}
-
 
 <header class="p-3 text-white header js-header" style="background-color: #000000;">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between" style="font-weight: bold;">
-        {% with request.resolver_match.view_name as view_name %}
-        <div class="nav-link-block"> 
-          <a class="navbar-brand mr-1" href="{% url 'homepage:home' %}" style="margin-right:30px;">
-            <img src="{% static 'img/cloudpets-header-logo1.png' %}" alt="Logo" width="50" height="50">
-          </a>
-              {% if view_name == 'homepage:home' %}
-                  <span class="nav-link px-2 text-white underline disabled nav-box ">{% trans 'Главная' %}</span>
+        <div class="d-flex flex-wrap align-items-center justify-content-between" style="font-weight: bold;">
+            {% with request.resolver_match.view_name as view_name %}
+            <div class="nav-link-block"> 
+                <a class="navbar-brand mr-1" href="{% url 'homepage:home' %}" style="margin-right:30px;">
+                    <img src="{% static 'img/cloudpets-header-logo1.png' %}" alt="Logo" width="50" height="50">
+                </a>
+                {% if view_name == 'homepage:home' %}
+                    <span class="nav-link px-2 text-white underline disabled nav-box ">Главная</span>
                 {% else %}
-                  <a class="nav-link px-2 text-white nav-box" href="{% url 'homepage:home' %}">{% trans 'Главная' %}</a>
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'homepage:home' %}">Главная</a>
                 {% endif %}
-
-              {% if view_name == 'event:all-events' %}
-                <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Конкурсы' %}</span>
-              {% else %}
-                  <a class="nav-link px-2 text-white nav-box" href="{% url 'event:all-events' %}">{% trans 'Конкурсы' %}</a>
-              {% endif %}
-
-              {% if view_name == 'faq:faq' %}
-                <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'FAQ' %}</span>
-              {% else %}
-                  <a class="nav-link px-2 text-white nav-box" href="{% url 'faq:faq' %}">{% trans 'FAQ' %}</a>
-              {% endif %}
-
-              {% if view_name == 'about:about' %}
-                <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'О нас' %}</span>
-              {% else %}
-                  <a class="nav-link px-2 text-white nav-box" href="{% url 'about:about' %}">{% trans 'О нас' %}</a>
-              {% endif %}
-
-              {% if user.is_authenticated %}
-                {% if view_name == 'feedback:feedback' %}
-                    <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Обратная связь' %}</span>
+                {% if view_name == 'event:all-events' %}
+                    <span class="nav-link px-2 text-white underline disabled nav-box">Конкурсы</span>
                 {% else %}
-                    <a class="nav-link px-2 text-white nav-box" href="{% url 'feedback:feedback' %}">{% trans 'Обратная связь' %}</a>
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'event:all-events' %}">Конкурсы</a>
                 {% endif %}
-
-                {% if view_name == 'users:profile' %}
-                  <span class="nav-link px-2 text-white underline disabled nav-box">{% trans 'Личный кабинет' %}</span>
+                {% if view_name == 'faq:faq' %}
+                    <span class="nav-link px-2 text-white underline disabled nav-box">FAQ</span>
                 {% else %}
-                    <a class="nav-link px-2 text-white nav-box" href="{% url 'users:profile' %}">{% trans 'Личный кабинет' %}</a>
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'faq:faq' %}">FAQ</a>
                 {% endif %}
-
+                {% if view_name == 'about:about' %}
+                    <span class="nav-link px-2 text-white underline disabled nav-box">О нас</span>
+                {% else %}
+                    <a class="nav-link px-2 text-white nav-box" href="{% url 'about:about' %}">О нас</a>
                 {% endif %}
-                <button type="button" class="btn btn-outline-light" onclick="location.href='{% url "users:donate" %}';">Пожертвование</button>
-          </div>
-          <div class="nav-link-block">
-            {% if user.is_authenticated %}
-              {% if user.is_superuser %}
-                <a class="nav-link px-2 text-white nav-box {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">{% trans 'Админ-панель' %}</a>
-              {% endif %}
-              {% if view_name == 'animals:add-animal' %}
-                  <button class="btn btn-outline-secondary disabled" type="button">{% trans 'Создать пост' %}</button>
-              {% else %}
-                  <a class="btn btn-outline-primary" href="{% url 'animals:add-animal' %}">{% trans 'Создать пост' %}</a>
-              {% endif %}
-                <form action="{% url 'users:logout' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-light">Выйти</button>
-                </form>
-              {% else %}
-                <button type="button" class="btn btn-outline-light" onclick="location.href='{% url "users:login" %}';">Войти</button>
-                <button type="button" class="btn btn-outline-info" onclick="location.href='{% url "users:signup" %}';">Регистрация</button>
-              {% endif %}
-          </div>
-        {% endwith %}
-      </div>
+                {% if user.is_authenticated %}
+                    {% if view_name == 'feedback:feedback' %}
+                        <span class="nav-link px-2 text-white underline disabled nav-box">Обратная связь</span>
+                    {% else %}
+                        <a class="nav-link px-2 text-white nav-box" href="{% url 'feedback:feedback' %}">Обратная связь</a>
+                    {% endif %}
+                    {% if view_name == 'users:profile' %}
+                        <span class="nav-link px-2 text-white underline disabled nav-box">Личный кабинет</span>
+                    {% else %}
+                        <a class="nav-link px-2 text-white nav-box" href="{% url 'users:profile' %}">Личный кабинет</a>
+                    {% endif %}
+                {% endif %}
+                {% if view_name == 'users:donate' %}
+                    <button class="btn btn-outline-secondary disabled" type="button">Пожертвование</button>
+                {% else %}
+                    <a class="btn btn-outline-light" href="{% url 'users:donate' %}">Пожертвование</a>
+                {% endif %}
+            </div>
+            <div class="nav-link-block">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <a class="nav-link px-2 text-white nav-box {% if view_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">Админ-панель</a>
+                    {% endif %}
+                    {% if view_name == 'animals:add-animal' %}
+                        <button class="btn btn-outline-secondary disabled" type="button">Создать пост</button>
+                    {% else %}
+                        <a class="btn btn-outline-primary" href="{% url 'animals:add-animal' %}">Создать пост</a>
+                    {% endif %}
+                    <form action="{% url 'users:logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-light">Выйти</button>
+                    </form>
+                {% else %}
+                    <button type="button" class="btn btn-outline-light" onclick="location.href='{% url 'users:login' %}';">Войти</button>
+                    <button type="button" class="btn btn-outline-info" onclick="location.href='{% url 'users:signup' %}';">Регистрация</button>
+                {% endif %}
+            </div>
+            {% endwith %}
+        </div>
     </div>
-  </header>
+</header>

@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-{% load i18n %}
 {% load static %}
 
 {% block title %}cloudpets - Просмотр поста{% endblock title %}
@@ -23,12 +23,15 @@
         {% if animal.main_image %}
         <img src="{{ animal.get_image_500x500.url }}" class="card-img-top" alt="{{ animal.name }}">
         {% endif %}
+        <hr>
         {% if animal.user == request.user %}
-            <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary btn-sm mt-3 ml-3" style="margin-left:10px;margin-right:10px;margin-bottom:10px;">Редактировать</a>
-            <form action="{% url 'animals:delete-animal' animal.pk %}" method="post" class="d-inline" id="deleteAnimalForm">
-                {% csrf_token %}
-                <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletePost()" style="margin-left:10px;">Удалить</button>
+          <div class="d-flex justify-content-start mb-3">
+            <a href="{% url 'animals:change-animal' animal.pk %}" class="btn btn-primary btn-sm mr-2">Редактировать</a>
+            <form action="{% url 'animals:delete-animal' animal.pk %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletePost()">Удалить</button>
             </form>
+          </div>
         {% endif %}
         <div class="card-body">
           <p class="card-text"><strong>Автор:</strong> <a href="{% url 'users:profile-user' animal.user.pk %}">{{ animal.user.first_name }}</a></p>
@@ -52,39 +55,40 @@
   <div class="row justify-content-center mt-4">
     <div class="col-md-6">
         <div class="card border-0 shadow-lg">
-          <div class="card-body">
-            <h2 class="mb-4">Комментарии:</h2>
-            {% if not request.user == animal.user %}
-            <form method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit" class="btn btn-warning btn-block mt-4">Отправить</button>
-            </form>
-            {% endif %}
+            <div class="card-body">
+                <h2 class="mb-4">Комментарии:</h2>
+                <div class="mb-4">
+                    {% if not request.user == animal.user %}
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.comment }}
+                        </div>
+                        <button type="submit" class="btn btn-warning">Отправить</button>
+                    </form>
+                    {% endif %}
+                </div>
                 <ul class="list-unstyled">
                     {% for comment in animal.comments.all %}
-                        <li class="media mb-4">
-                            <div class="media-body">
-                                <h5 class="mt-0"> <a href="{% url 'users:profile-user' comment.user.pk %}">{{ comment.user.first_name }} </a></h5>
-                                <p>{{ comment.comment }}</p>
-                                {% if request.user == comment.user %}
-                                    <form action="{% url 'animals:delete-comment' comment.pk %}" method="post" class="d-inline" id="deleteForm-{{ comment.pk }}">
-                                        {% csrf_token %}
-                                        <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDelete('{{ comment.pk }}')">Удалить</button>
-                                    </form>
-                                {% endif %}
-                            </div>
-                        </li>
+                    <li class="media mb-4">
+                        <div class="media-body">
+                            <h5 class="mt-0"><a href="{% url 'users:profile-user' comment.user.pk %}">{{ comment.user.first_name }}</a></h5>
+                            <p>{{ comment.comment }}</p>
+                            {% if request.user == comment.user %}
+                            <form action="{% url 'animals:delete-comment' comment.pk %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ comment.pk }}')">Удалить</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </li>
                     {% empty %}
-                        <p>Пока никто не прокомментировал данный пост.</p>
+                    <p>Пока никто не прокомментировал данный пост.</p>
                     {% endfor %}
                 </ul>
-
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <script>
     function confirmDelete(commentId) {

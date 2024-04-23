@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-{% load i18n %}
 {% load static %}
 
 {% block title %}cloudpets - Пожертвование{% endblock title %}
@@ -23,16 +23,14 @@
               <li>Банк-получатель: <strong>АО «Тинькофф Банк»</strong></li>
             </ul>
           </div>
+          <div class="text-center">
+            <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="cloudpets" class="img-fluid" style="max-width: 300px;">
+          </div>
           <hr>
           <p class="text-center">Мы благодарим вас за вашу поддержку!</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-4">
-    <div class="col-md-8 text-center">
-        <img src="{% static 'img/cloudpets-header-logo.png' %}" alt="cloudpets" class="img-fluid" style="max-width: 300px;">
-    </div>
-</div>
 </div>
 {% endblock content %}

@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-{% load i18n %}
 {% load static %}
 
 {% block title %}cloudpets - Конкурсы{% endblock title %}
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <h4 class="card-title text-center text-primary">{{ event.subject }}</h4>
                     <p class="card-text text-center text-muted"><strong>Тема конкурса:</strong> {{ event.get_theme_display }}</p>
-                    <p class="card-text text-center">{{ event.body|truncatewords_html:25 }}</p>
+                    <p class="card-text text-center">{{ event.body|truncatechars_html:100 }}</p>
                     <p class="card-text text-center"><small class="text-muted"><strong>Дата окончания:</strong> {{ event.close_date }}</small></p>
                     <div class="text-center">
                         <a href="{% url 'event:current-event' pk=event.id %}" class="btn btn-primary btn-lg btn-md" style="width: 100%;">

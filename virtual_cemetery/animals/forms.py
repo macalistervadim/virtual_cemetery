@@ -22,10 +22,19 @@ class AddNewAnimalForm(BootstrapFormMixin, django.forms.ModelForm):
             animals.models.Animal.date_of_birth.field.name,
             animals.models.Animal.date_of_death.field.name,
         )
-        widgets = {
-            "date_of_birth": django.forms.DateInput(attrs={"type": "date"}),
-            "date_of_death": django.forms.DateInput(attrs={"type": "date"}),
-        }
+
+    date_of_birth = django.forms.DateField(
+        label="Дата рождения",
+        help_text="Введите дату рождения вашего питомца",
+        widget=django.forms.widgets.SelectDateWidget(),
+        required=False,
+    )
+    date_of_death = django.forms.DateField(
+        label="Дата смерти",
+        help_text="Введите дату смерти вашего питомца",
+        widget=django.forms.widgets.SelectDateWidget(),
+        required=False,
+    )
 
 
 class AddNewAnimalComment(BootstrapFormMixin, django.forms.ModelForm):

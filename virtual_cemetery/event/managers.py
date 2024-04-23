@@ -31,7 +31,12 @@ class UserWorksManager(django.db.models.Manager):
             self.get_queryset()
             .filter(event_id=pk)
             .select_related("user")
-            .values("user__username", "subject", "body", "id")
+            .values(
+                "user__username",
+                event.models.WorkUser.subject.field.name,
+                event.models.WorkUser.body.field.name,
+                event.models.WorkUser.id.field.name,
+            )
         )
         return queryset
 

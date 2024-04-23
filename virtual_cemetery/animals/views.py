@@ -94,8 +94,6 @@ def add_new_animal(request):
         if form.is_valid():
             new_animal = form.save(commit=False)
             new_animal.user = request.user
-            if "main_image" in request.FILES:
-                new_animal.main_image = request.FILES["main_image"]
             new_animal.save()
 
             django.contrib.messages.success(

@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-{% load i18n %}
 {% load static %}
 
 {% block title %}cloudpets - Профиль пользователя{% endblock title %}
@@ -25,11 +25,6 @@
                         {{ user.first_name }}
                         {% else %}
                         {{ user.email }}
-                        {% endif %}
-                        {% if user.is_superuser %}
-                            <span class="badge badge-danger ml-2" style="border-radius: 5px;">
-                                <span style="background-color: #1E90FF; color: white; padding: 2px 4px; border-radius: 5px; font-size: 18px;">Администратор</span>
-                            </span>
                         {% endif %}
                     </h2>
                     <div class="btn-group" role="group">
@@ -61,29 +56,6 @@
                             </div>
                             <div class="card-footer">
                                 <a href="{% url 'animals:animal-detail' post.pk %}" class="btn btn-primary stretched-link">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
-{% if feedbacks %}
-<div class="row mt-4">
-    <div class="col-md-12">
-        <div class="card border-0 shadow">
-            <div class="card-body">
-                <h3>Ваши обращения:</h3>
-                <div class="row">
-                    {% for feedback in feedbacks %}
-                    <div class="col-md-3 mb-3">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Тема обращения: {{ feedback.get_theme_display }}</h5>
-                                <h5 class="card-title">Уникальный номер: {{ feedback.id }}</h5>
                             </div>
                         </div>
                     </div>

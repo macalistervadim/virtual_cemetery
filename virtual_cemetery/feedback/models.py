@@ -43,6 +43,7 @@ class Feedback(core.models.AbstractModel):
     status = django.db.models.IntegerField(
         translation.gettext_lazy("статус"),
         choices=_FeedbackStatus.choices,
+        default=_FeedbackStatus.CREATED,
     )
     text = django.db.models.TextField(
         translation.gettext_lazy("текст обращения"),

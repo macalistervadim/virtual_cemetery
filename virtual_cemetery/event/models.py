@@ -107,10 +107,12 @@ class WorkUser(core.models.AbstractModel):
             "Укажите краткую предысторию по созданию работы (макс. 500 симв.)",
         ),
     )
-    files = django.db.models.FileField(
+    image = sorl.thumbnail.ImageField(
         translation.gettext_lazy("работа"),
         upload_to=item_directory_path,
         help_text=translation.gettext_lazy("Загрузите вашу работу"),
+        blank=True,
+        null=True,
     )
 
     class Meta:
@@ -122,24 +124,24 @@ class WorkUser(core.models.AbstractModel):
     def __str__(self):
         return self.subject
 
-    def get_files_200x200(self):
+    def get_image_200x200(self):
         return sorl.thumbnail.get_thumbnail(
-            self.files,
+            self.image,
             "200x200",
             crop="center",
             quality=51,
         )
 
-    def get_files_500x500(self):
+    def get_image_500x500(self):
         return sorl.thumbnail.get_thumbnail(
-            self.files,
+            self.image,
             "500x500",
             crop="center",
             quality=100,
         )
 
     def image_tmb(self):
-        if self.files:
+        if self.image:
             return django.utils.html.mark_safe(
                 f"<img src='{self.get_image_200x200().url}' width='50'>",
             )

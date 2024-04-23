@@ -25,11 +25,6 @@ class UserManager(django.contrib.auth.models.UserManager):
     def active(self):
         return self.get_queryset().filter(is_active=True)
 
-    """
-    тут была лютая багуля, если вводишь почту заблоченного юзера в логининиг, оно не может по ней найти пользотвателя
-    оставлю это тут, чтобы помнить, что сейчас оно ишет по неактивным юзерам ТОЖЕ
-    """
-
     def by_mail(self, mail):
         normilized_email = self.normalize_email(mail)
         return self.get(email=normilized_email)
